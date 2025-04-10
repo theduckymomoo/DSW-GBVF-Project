@@ -1,0 +1,42 @@
+.container{
+    background-color: #191825;
+    text-align: center;
+    width: 700px;
+    height: 300px;
+    padding: 20px;
+}
+.container h3{
+    color: #8a2be2;
+}
+
+.username,.password label{
+    color: #8a2be2;
+}
+.username input{
+    background-color: #8a2be2;
+    color: white;
+}
+.password input{
+    background-color: #8a2be2;
+    color: white;
+}
+
+.username input::placeholder{
+    color: white;
+}
+.password input::placeholder{
+    color: white;
+}
+.signup{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color:  white;
+}
+.signups{
+    align-self: flex-end;
+}
+input{
+    border-radius: 10px;
+    padding: 10px;
+}
