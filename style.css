@@ -121,6 +121,10 @@ hr {
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
+  .sections img {
+    max-width: 500px; 
+    height: auto;
+  }
 
 #text {
     margin: 2rem 0;

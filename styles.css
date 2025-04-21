@@ -25,7 +25,7 @@ header {
 }
 
 .logo img {
-    width: 200px;
+    width: 150px;
     height: auto;
     display: block;
 }
@@ -93,7 +93,7 @@ nav a:hover {
     margin-top: 30px;
 }
 
-#findSport, #Learn {
+#Story, #Learn {
     padding: 12px 25px;
     font-size: 1rem;
     font-weight: 600;
@@ -107,14 +107,14 @@ nav a:hover {
     justify-content: center;
 }
 
-#findSport {
+#Story {
     background-color: #ffb01d;
     border: none;
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#findSport:hover {
+#Story:hover {
     background-color: #ffa000;
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -165,10 +165,9 @@ nav a:hover {
     margin: 0 auto;
 }
 
-.tips {
+.tips-top, .tips-bottom {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 30px;
     padding: 20px 5%;
     max-width: 1400px;
@@ -205,7 +204,6 @@ nav a:hover {
 }
 
 .text {
-    background-color: #f8f7f7;
     padding: 20px;
     border-top: 3px solid #8558af;
 }
@@ -295,28 +293,6 @@ nav a:hover {
     color: white;
 }
 
-.form-container {
-    background-color: white;
-    margin: 50px auto;
-    padding: 30px;
-    max-width: 500px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.form-container h2 {
-    color: #8558af;
-    margin-bottom: 15px;
-    font-size: 1.8rem;
-}
-
-.form-container p {
-    color: #555;
-    margin-bottom: 25px;
-    font-size: 1.1rem;
-}
-
 label {
     font-weight: 600;
     color: #444;
@@ -363,31 +339,24 @@ button[type="submit"]:hover {
 }
 
 .footer-container {
-    background-color: #333333;
+    background-color: #8a2be2;
     color: white;
-    padding: 50px 5%;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-.top, .bottom {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 40px;
+    margin-bottom: 0; 
+    padding: 3rem 5% 2rem;
+    margin-top: auto;
 }
 
 .footer-column {
-    flex: 1;
     min-width: 250px;
-    max-width: 300px;
+    margin-bottom: 2rem;
 }
 
 .footer-column h2 {
-    color: #ffb01d;
-    margin-bottom: 20px;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
     position: relative;
     padding-bottom: 10px;
 }
@@ -395,20 +364,19 @@ button[type="submit"]:hover {
 .footer-column h2::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 50px;
+    width: 40px;
     height: 3px;
     background-color: #ffb01d;
+    bottom: 0;
+    left: 0;
 }
 
 .footer-column ul {
     list-style: none;
-    padding: 0;
 }
 
 .footer-column ul li {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     position: relative;
     padding-left: 15px;
     transition: all 0.3s ease;
@@ -543,5 +511,113 @@ button[type="submit"]:hover {
         right: 1rem;
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
+    }
+}
+
+.facts-container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.facts-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.facts-title {
+    margin-bottom: 26px;
+    text-align: center;
+    position: relative;
+}
+
+.facts-title h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 12px;
+}
+
+.facts-title h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #8a2be2;
+    border-radius: 2px;
+}
+
+.facts-intro {
+    margin: 25px 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+    padding: 0 10px;
+}
+
+.facts {
+    margin: 30px 0;
+    padding: 25px;
+}
+
+.facts p {
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.facts-list {
+    margin-top: 20px;
+    margin-left: 25px;
+    list-style-type: none;
+}
+
+.facts-list li {
+    padding: 12px 0;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 28px;
+}
+
+.facts-list li::before {
+    content: "•";
+    color: #8a2be2;
+    font-weight: bold;
+    font-size: 1.4rem;
+    position: absolute;
+    left: 0;
+    top: 9px;
+}
+
+.facts-list span {
+    color: #8a2be2;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .facts-container {
+        margin: 1.5rem;
+        padding: 1.5rem;
+    }
+    
+    .facts-title h3 {
+        font-size: 1.5rem;
+    }
+    
+    .facts {
+        padding: 15px;
+    }
+    
+    .facts-list {
+        margin-left: 10px;
     }
 }
