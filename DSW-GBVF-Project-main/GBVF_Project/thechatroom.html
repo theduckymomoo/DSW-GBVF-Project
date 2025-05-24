@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/thechatstyle.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">U</div>
+                <h1>Ukhuseleko</h1>
+            </div>
+            
+            <div class="user-controls">
+                <div class="user-status">
+                    <div class="status-indicator"></div>
+                    <span id="username">Anonymous_User</span>
+                </div>
+                <button class="btn" id="changeNickname">Change Nickname</button>
+                <button class="btn" id="endSession">End Session</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="section">
+        <div class="select-counselor">
+            <div class="chat">
+                <h3>Chat</h3>
+                <input placeholder="Search Counselor">
+            </div>
+            
+            <hr>
+            <ul>
+                <li class="item">Boitumelo Thage</li>
+                <li class="item">Thapelo Kleinboy Nekgotha</li>
+                <li class="item">Sharika Rawjee</li>
+                <li class="item">Kgomotso Siwelane</li>
+            </ul>
+            <hr>
+            <button>Select</button>
+        </div>
+        <div class="chat-container">
+            <div class="chat-header">Anonymous Chat with a Counselor</div>
+            <div class="chat-messages" id="chatMessages">
+              <div class="message counselor">Hello! I'm here to listen. How are you feeling today?</div>
+            </div>
+            <div class="chat-input">
+              <input type="text" id="userInput" placeholder="Type your message..." onkeydown="if(event.key === 'Enter') sendMessage()" />
+              <button id="send">Send</button>
+            </div>
+          </div>
+
+    </div>
+    <script src="../js/chatscript.js"></script>
+</body>
+</html>

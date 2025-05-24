@@ -1,0 +1,187 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(245, 245, 245);
+    padding: 20px;
+    margin: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+form {
+    background-color: rgb(248, 231, 246);
+    padding: 30px 20px 20px 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(75, 22, 76, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgb(75, 22, 76);
+    background-color: rgb(248, 231, 246);
+}
+
+form h2 {
+    color: rgb(75, 22, 76);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: rgb(75, 22, 76);
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.inputForm {
+    position: relative;
+    background-color: rgb(221, 136, 207);
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.inputForm input {
+    padding: 10px;
+    border: 1px solid rgb(221, 136, 207);
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s, transform 0.3s;
+    background-color: white;
+}
+
+.inputForm input:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgb(221, 136, 207);
+}
+
+button {
+    background-color: rgb(221, 136, 207);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(75, 22, 76);
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+.success-btn {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: rgb(75, 22, 76);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.success-btn:hover {
+    background-color: rgb(221, 136, 207);
+}
+
+.emergency-contact {
+    border: 1px solid rgb(221, 136, 207);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: rgb(248, 231, 246);
+}
+
+.password-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.password-wrapper .container {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.container {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 14px;
+    user-select: none;
+}
+
+.checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1em;
+    width: 1em;
+    border: 2px solid rgb(75, 22, 76);
+    border-radius: 1rem 0rem 1rem;
+    transform: rotate(45deg);
+    transition: all .5s ease-in-out;
+}
+
+.container input:checked ~ .checkmark {
+    box-shadow: 0px 0px 20px 2px rgb(221, 136, 207);
+    border-radius: 1rem 0rem 1rem;
+    background-color: rgba(221, 136, 207, 0.2);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    top: 0.3em;
+    left: 0.3em;
+    width: 0.4em;
+    height: 0.4em;
+    background-color: rgb(75, 22, 76);
+    border-radius: 50%;
+    animation: upAnimate 0.5s ease-in-out;
+}
+
+@keyframes upAnimate {
+    from {
+        transform: translate(-10px, -10px) scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+}
