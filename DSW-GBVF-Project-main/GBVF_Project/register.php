@@ -4,7 +4,7 @@ session_start();
 $host = 'localhost';
 $db = 'registration_db';
 $user = 'root';
-$pass = '';
+$pass = 'Qwerty123';
 
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {

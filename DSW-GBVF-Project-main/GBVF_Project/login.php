@@ -9,7 +9,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
 
-$conn = new mysqli("localhost", "root", "", "registration_db", 3306);
+$conn = new mysqli("localhost", "root", "Qwerty123", "registration_db", 3306);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
