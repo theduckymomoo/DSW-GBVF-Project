@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Elements
     const chatMessages = document.getElementById('chatMessages');
     const messageInput = document.getElementById('messageInput');
     const sendButton = document.getElementById('sendMessage');
@@ -8,27 +7,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const closePanelButton = document.querySelector('.close-panel');
     const resourcePanel = document.querySelector('.resource-panel');
     const resourceLinks = document.querySelectorAll('.support-options a');
-    
-    // Auto-scroll to bottom of chat
+    const counselorStatus = document.querySelector('.counselor-status');
+    const clearChatButton = document.querySelector('.clear-chat');
+    const downloadChatButton = document.querySelector('.download-chat');
+    const emojiButton = document.querySelector('.emoji-btn');
+    const emergencyButton = document.getElementById('emergencyBtn');
+    const apiKey = "AIzaSyAFAYp5fJWuXKU4sTTcs_Nu36EovnxaAJM"; // <--- INSERT YOUR API KEY HERE
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
     function scrollToBottom() {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
-    
-    // Initial scroll to bottom
+
     scrollToBottom();
-    
-    // Send message function
-    function sendMessage() {
-        const message = messageInput.value.trim();
-        if (!message) return;
-        
-        // Get current time
+    counselorStatus.textContent = 'Online';
+
+    function escapeHTML(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function displayUserMessage(message) {
         const now = new Date();
         const hours = now.getHours().toString().padStart(2, '0');
         const minutes = now.getMinutes().toString().padStart(2, '0');
         const timeString = `${hours}:${minutes}`;
-        
-        // Create message HTML
+
         const messageHTML = `
             <div class="message user">
                 <div class="message-content">
@@ -37,32 +42,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="message-time">${timeString}</div>
             </div>
         `;
-        
-        // Insert message before typing indicator
+
         const typingIndicator = document.querySelector('.is-typing');
         if (typingIndicator) {
             typingIndicator.insertAdjacentHTML('beforebegin', messageHTML);
         } else {
             chatMessages.insertAdjacentHTML('beforeend', messageHTML);
         }
-        
-        // Clear input
-        messageInput.value = '';
-        
-        // Scroll to bottom
         scrollToBottom();
-        
-        // Show typing indicator if not already visible
-        if (!typingIndicator) {
-            showTypingIndicator();
-        }
-        
-        // Simulate counselor response after a delay
-        simulateCounselorResponse(message);
     }
-    
-    // Show typing indicator
+
+    function displayCounselorMessage(message) {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const timeString = `${hours}:${minutes}`;
+
+        const counselorHTML = `
+            <div class="message counselor">
+                <div class="message-content">
+                    <p>${escapeHTML(message)}</p>
+                </div>
+                <div class="message-time">${timeString}</div>
+            </div>
+        `;
+        chatMessages.insertAdjacentHTML('beforeend', counselorHTML);
+        scrollToBottom();
+    }
+
     function showTypingIndicator() {
+        hideTypingIndicator(); 
+
         const typingHTML = `
             <div class="message counselor is-typing">
                 <div class="typing-indicator">
@@ -72,165 +82,207 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `;
-        
+
         chatMessages.insertAdjacentHTML('beforeend', typingHTML);
         scrollToBottom();
-        
-        // Update counselor status
-        document.querySelector('.counselor-status').textContent = 'Zandi is typing...';
+
+        counselorStatus.textContent = 'Zandi is typing...';
     }
-    
-    // Hide typing indicator
+
     function hideTypingIndicator() {
-        const typingIndicator = document.querySelector('.is-typing');
-        if (typingIndicator) {
-            typingIndicator.remove();
-        }
-        
-        // Update counselor status
-        document.querySelector('.counselor-status').textContent = 'Online';
+        const typingIndicators = document.querySelectorAll('.is-typing');
+        typingIndicators.forEach(indicator => indicator.remove());
+        counselorStatus.textContent = 'Online';
     }
-    
-    // Simulate counselor response
-    function simulateCounselorResponse(userMessage) {
-        // Simple response logic based on user message keywords
-        let responseText = '';
-        const lowerMessage = userMessage.toLowerCase();
-        
-        if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-            responseText = "Hello there. I'm here to help. How are you feeling today?";
-        } else if (lowerMessage.includes('help') || lowerMessage.includes('need help')) {
-            responseText = "I'm glad you've reached out. To help you better, could you share a bit more about what you're going through?";
-        } else if (lowerMessage.includes('scared') || lowerMessage.includes('afraid') || lowerMessage.includes('fear')) {
-            responseText = "It takes courage to acknowledge fear. Your safety is the priority. Would you like to discuss some safety planning options?";
-        } else if (lowerMessage.includes('money') || lowerMessage.includes('financial') || lowerMessage.includes('finance')) {
-            responseText = "Financial abuse is a serious form of control. There are resources and support available. Would you like me to share some options for financial assistance?";
-        } else if (lowerMessage.includes('leave') || lowerMessage.includes('escape') || lowerMessage.includes('get out')) {
-            responseText = "If you're considering leaving a difficult situation, it's important to plan carefully. Would you like me to help you think through some safety considerations?";
-        } else if (lowerMessage.includes('children') || lowerMessage.includes('kids') || lowerMessage.includes('child')) {
-            responseText = "I understand you're concerned about children in this situation. Their safety and wellbeing is important. There are specific resources available to help protect children.";
-        } else {
-            responseText = "Thank you for sharing that. It's important to acknowledge these experiences. How have you been coping with this situation?";
-        }
-        
-        // Random response delay between 2-4 seconds
-        const delay = Math.floor(Math.random() * 2000) + 2000;
-        
-        setTimeout(() => {
-            // Hide typing indicator
+
+    async function sendMessage() {
+        const message = messageInput.value.trim();
+        if (!message) return;
+
+        displayUserMessage(message);
+        messageInput.value = '';
+        sendButton.disabled = true;
+        showTypingIndicator();
+
+        try {
+            const chatHistory = [
+                { role: "user", parts: [{ text: message }] }
+            ];
+
+            const generationConfig = {
+                maxOutputTokens: 50,
+                temperature: 0.7,
+                topP: 0.95,
+            };
+
+            const systemInstruction = {
+                parts: [{
+                    text: "You are Zandi, a supportive and empathetic counselor for Safe Haven. Your goal is to provide concise, helpful, and reassuring responses. Focus on active listening, validating feelings, and offering practical, brief guidance or asking open-ended questions to encourage further sharing. Keep your responses under 100 words."
+                }]
+            };
+
+            const payload = {
+                contents: chatHistory,
+                generationConfig: generationConfig,
+                systemInstruction: systemInstruction
+            };
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error("API Response Error Status:", response.status);
+                console.error("API Response Error Data:", errorData);
+                throw new Error(`API error: ${response.status} - ${errorData.error.message || 'Unknown API error'}`);
+            }
+
+            const result = await response.json();
+
+            if (result.candidates && result.candidates.length > 0 &&
+                result.candidates[0].content && result.candidates[0].content.parts &&
+                result.candidates[0].content.parts.length > 0) {
+                const botResponse = result.candidates[0].content.parts[0].text;
+                displayCounselorMessage(botResponse);
+            } else {
+                displayCounselorMessage("Sorry, I couldn't get a clear response from the AI. The response structure was unexpected.", 'bot');
+                console.error("Unexpected API response structure:", result);
+            }
+        } catch (error) {
+            console.error("Error sending message to Gemini API:", error);
+            displayCounselorMessage("Oops! Something went wrong while connecting to the AI. Please ensure your API key is correct and check your console for details.", 'bot');
+        } finally {
             hideTypingIndicator();
-            
-            // Get current time
-            const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const timeString = `${hours}:${minutes}`;
-            
-            // Create counselor message HTML
-            const counselorHTML = `
-                <div class="message counselor">
-                    <div class="message-content">
-                        <p>${responseText}</p>
-                    </div>
-                    <div class="message-time">${timeString}</div>
-                </div>
-            `;
-            
-            chatMessages.insertAdjacentHTML('beforeend', counselorHTML);
-            scrollToBottom();
-        }, delay);
+            sendButton.disabled = false;
+            messageInput.focus();
+        }
     }
-    
-    // Escape HTML special characters to prevent XSS
-    function escapeHTML(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-    
-    // Event listeners
+
     sendButton.addEventListener('click', sendMessage);
-    
     messageInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             sendMessage();
         }
     });
-    
-    // Quick exit button
+
+    if (emergencyButton) {
+        emergencyButton.addEventListener('click', function() {
+            window.location.href = 'https://www.google.com';
+        });
+    }
+
     quickExitButton.addEventListener('click', function() {
         window.location.href = 'https://www.google.com';
     });
-    
-    // Keyboard shortcut for quick exit (ESC key)
+
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             window.location.href = 'https://www.google.com';
         }
     });
-    
-    // Resource category buttons
+
+    if (clearChatButton) {
+        clearChatButton.addEventListener('click', function() {
+            const initialTimestamp = chatMessages.querySelector('.message-timestamp');
+            const initialCounselorMessage = chatMessages.querySelector('.message.counselor');
+
+            chatMessages.innerHTML = ''; 
+
+            if (initialTimestamp && initialCounselorMessage) {
+                chatMessages.appendChild(initialTimestamp.cloneNode(true));
+                chatMessages.appendChild(initialCounselorMessage.cloneNode(true));
+            }
+            scrollToBottom();
+            console.log('Chat history cleared.');
+            displayCounselorMessage("Chat history cleared. How can I help you now?");
+        });
+    }
+
+    if (downloadChatButton) {
+        downloadChatButton.addEventListener('click', function() {
+            let chatTranscript = '';
+            const messages = chatMessages.querySelectorAll('.message');
+
+            messages.forEach(messageDiv => {
+                const sender = messageDiv.classList.contains('user') ? 'User' : 'Counselor';
+                const content = messageDiv.querySelector('.message-content p').textContent;
+                const time = messageDiv.querySelector('.message-time') ? messageDiv.querySelector('.message-time').textContent : '';
+                const timestamp = messageDiv.classList.contains('message-timestamp') ? messageDiv.querySelector('span').textContent : '';
+
+                if (timestamp) {
+                    chatTranscript += `--- ${timestamp} ---\n`;
+                } else {
+                    chatTranscript += `${sender} (${time}): ${content}\n`;
+                }
+            });
+
+            const blob = new Blob([chatTranscript], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'chat_transcript.txt';
+            document.body.appendChild(a);
+            a.click();
+
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            displayCounselorMessage("Your chat transcript has been downloaded!");
+            console.log('Chat transcript downloaded.');
+        });
+    }
+
+    if (emojiButton) {
+        emojiButton.addEventListener('click', function() {
+            console.log('Emoji picker functionality would be implemented here.');
+            displayCounselorMessage("Emoji picker is not yet implemented. You can type emojis directly for now! 😊");
+        });
+    }
+
+
     categoryButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Remove active class from all buttons
             categoryButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
             this.classList.add('active');
-            
-            // Here you would load different resources based on category
             const category = this.dataset.category;
-            
-            // Placeholder for category switching logic
-            console.log(`Switched to ${category} category`);
-            
-            // In a real implementation, you would load different content here
-            // updateResourceContent(category);
+            console.log(`Switched to ${category} category. Loading relevant resources.`);
+            displayCounselorMessage(`Switched to "${this.textContent}" resources. Here you would see updated content.`);
         });
     });
-    
-    // Toggle resource panel on mobile
-    closePanelButton.addEventListener('click', function() {
-        resourcePanel.style.display = 'none';
-    });
-    
-    // Support options links
+
+    if (closePanelButton) {
+        closePanelButton.addEventListener('click', function() {
+            if (resourcePanel) {
+                resourcePanel.style.display = 'none';
+            }
+        });
+    }
+
     resourceLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            
-            // Remove active class from all links
             resourceLinks.forEach(lnk => lnk.classList.remove('active'));
-            
-            // Add active class to clicked link
             this.classList.add('active');
-            
-            // Here you would load different chat interfaces based on option
             const option = this.className.split(' ')[0];
-            
-            // Placeholder for option switching logic
-            console.log(`Switched to ${option}`);
-            
-            // In a real implementation, you would change the chat context
-            // switchChatContext(option);
+            console.log(`Switched to ${option}. Changing chat context.`);
+            displayCounselorMessage(`You've selected "${this.textContent}". The chat context would change here.`);
         });
     });
-    
-    // Adjust layout based on screen size
+
     function adjustLayout() {
         if (window.innerWidth <= 992 && window.innerWidth > 768) {
-            // Tablet view
-            resourcePanel.style.display = 'none';
+            if (resourcePanel) resourcePanel.style.display = 'none';
         } else if (window.innerWidth > 992) {
-            // Desktop view
-            resourcePanel.style.display = 'flex';
+            if (resourcePanel) resourcePanel.style.display = 'flex';
         }
     }
-    
-    // Initial layout adjustment
+
     adjustLayout();
-    
-    // Adjust layout on window resize
+
     window.addEventListener('resize', adjustLayout);
 });

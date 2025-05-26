@@ -1,11 +1,6 @@
 <?php
 session_start();
 
-// Check if the user is logged in
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,18 +8,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ukhuseleko</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
     <button class="emergency-btn" id="emergencyBtn">
-        <img src="emergency-button.png" alt="Emergency Icon">
+        <img src="images/emergency-button.png" alt="Emergency Icon">
         EMERGENCY HELP
     </button>
     <header>
         <div class="logo">
-            <img src="logo-swap-removebg.png" alt="Logo">
+            <img src="images/logo-swap-removebg.png" alt="Logo">
         </div>
         
         <nav>
@@ -37,7 +32,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <li><a href="share.html">Share Your Story</a></li>
                 <li><a href="Contact.html">Contact Us</a></li>
                 <li>
-                    <a href="logout.php">Logout (<?php echo htmlspecialchars($_SESSION["username"]); ?>)</a>
+                 
+                    <?php if (isset($_SESSION["username"])): ?>
+                        <a href="logout.php">
+                            Logout (<?php echo htmlspecialchars($_SESSION["username"]); ?>)
+                        </a>
+                    <?php else: ?>
+                        <a href="login.php">
+                            Login (Guest)
+                        </a>
+                    <?php endif; ?>
+
                 </li>  
             </ul>
         </nav>
@@ -54,7 +59,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </div>
     </div>
 
-    <!-- Rest of your page content remains the same -->
     <div class="text1">
         <h2>How Can We Help You</h2>
         <p>Ukhuseleko stands against gender-based violence and are committed to raising awareness, supporting survivors, and driving meaningful change through advocacy and action.</p>   
@@ -64,7 +68,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <div class="tips-top">
             <div class="emergency">
                 <div class="picture">
-                    <img src="emergency.png">
+                    <img src="images/emergency.png">
                         <div class="text">
                             <h2>Emergency Response</h2>
                             <p>Quick access to emergency services with our silent reporting system and real-time status updates.</p>
@@ -74,7 +78,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
             <div class="legal" onclick="location.href='legal.html'">
                 <div class="picture">
-                    <img src="legal.png">
+                    <img src="images/legal.png">
                         <div class="text">
                             <h2>Legal Information</h2>
                             <p>Learn about your rights under the Domestic Violence Act and how to obtain protection orders.</p>
@@ -84,7 +88,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
             <div class="support">
                 <div class="picture">
-                    <img src="support.png">
+                    <img src="images/support.png">
                         <div class="text">
                             <h2>Support Network</h2>
                             <p>Connect with local organizations, shelters, and support groups in your community.</p>
@@ -94,7 +98,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
             <div class="resource">
                 <div class="picture">
-                    <img src="resourse.png">
+                    <img src="images/resourse.png">
                         <div class="text">
                             <h2>Resource Hub</h2>
                             <p>Access information about government grants, employment programs, and economic empowerment.</p>
@@ -105,7 +109,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <div class="tips-bottom">
             <div class="safe-haven" onclick="window.location.href='finalChat.html'">
                 <div class="picture">
-                    <img src="healing2.png">
+                    <img src="images/healing2.png">
                         <div class="text">
                             <h2>Safe Haven</h2>
                             <p>Connect with fellow GBV survivors in a safe space designed for support, shared stories, and healing.</p>
@@ -115,7 +119,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
             <div class="share-your-story" onclick="window.location.href='share.html'">
                 <div class="picture">
-                    <img src="share_your_story.png">
+                    <img src="images/share_your_story.png">
                         <div class="text">
                             <h2>Share Your Story</h2>
                             <p>Your voice matters — share your journey and let others know they're not alone.</p>
@@ -124,7 +128,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             </div>
             <div class="counseling">
                 <div class="picture">
-                    <img src="sitting.png">
+                    <img src="images/sitting.png">
                         <div class="text">
                             <h2>Counseling</h2>
                             <p>Access confidential counseling and speak to professionals who are here to support your healing journey.</p>
@@ -134,7 +138,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
             <div class="how-to-get-out">
                 <div class="picture">
-                    <img src="get_out_woman.png">
+                    <img src="images/get_out_woman.png">
                         <div class="text">
                             <h2>How to Get Out</h2>
                             <p>Step-by-step guidance to leave toxic relationships with safety planning, emotional support, and trusted resources.</p>

@@ -1,16 +1,20 @@
+body {
+    font-family: 'Inter', sans-serif; /* Using Inter for a clean, modern feel */
+}
+
 .emergency-btn {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background: linear-gradient(135deg, #d9534f 0%, #c9302c 100%);
+    background: linear-gradient(135deg, #ff6b6b 0%, #e05c5c 100%); /* Softer red gradient, kept for urgency */
     color: white;
     border: none;
     padding: 1rem 2rem;
-    border-radius: 50px;
+    border-radius: 30px; /* More rounded */
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(217, 83, 79, 0.4);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4); /* Softer shadow */
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -22,9 +26,9 @@
 }
 
 .emergency-btn:hover {
-    background: linear-gradient(135deg, #c9302c 0%, #a92824 100%);
+    background: linear-gradient(135deg, #e05c5c 0%, #c94c4c 100%);
     transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(217, 83, 79, 0.5);
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.5);
 }
 
 .emergency-btn img {
@@ -34,13 +38,13 @@
 
 .emergency-btn:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.3), 0 5px 15px rgba(217, 83, 79, 0.4);
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3), 0 5px 15px rgba(255, 107, 107, 0.4);
 }
 
 header {
-    background-color: #8a2be2;
+    background-color: #6A0DAD; /* Deep Dark Orchid for an exotic feel */
     padding: 1rem 5%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
     position: sticky;
     top: 0;
     z-index: 100;
@@ -77,36 +81,44 @@ nav a {
     text-decoration: none;
     font-weight: 600;
     padding: 0.7rem 1.2rem;
-    border-radius: 30px;
+    border-radius: 20px;
     transition: all 0.3s ease;
     display: inline-block;
 }
 
 nav a:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.35); /* More visible hover */
+    transform: translateY(-3px); /* Slightly more lift */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
 }
+
+nav a.active {
+    background-color: rgba(255, 255, 255, 0.45); /* More distinct active state */
+}
+
 /* Chat Room Specific Styles */
 .chat-page {
-    background-color: #f0f2f5;
+    background-color: #f5f5f5; /* Slightly darker light background for contrast */
+    /* Added subtle background texture */
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0e0e0' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5zM1 0h1L0 2V1z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
 }
 
 .chat-container {
     display: flex;
     height: calc(100vh - 90px);
     margin: 15px;
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2); /* Even more pronounced shadow */
     background-color: #fff;
+    border: 1px solid rgba(106, 13, 173, 0.1); /* Subtle border matching primary color */
 }
 
 /* Sidebar Styles */
 .chat-sidebar {
     width: 280px;
-    background-color:white;
-    border-right: 1px solid #e0e0e0;
+    background-color: #fcfcff; /* Very light, almost white */
+    border-right: 1px solid #e8e8e8;
     display: flex;
     flex-direction: column;
     padding: 20px 0;
@@ -116,14 +128,14 @@ nav a:hover {
     display: flex;
     align-items: center;
     padding: 15px 20px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e8e8e8;
 }
 
 .anonymous-avatar {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #8a2be2;
+    background-color: #6A0DAD; /* Deep Dark Orchid */
     color: #fff;
     display: flex;
     align-items: center;
@@ -131,11 +143,13 @@ nav a:hover {
     font-size: 24px;
     font-weight: bold;
     margin-right: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
 }
 
 .user-info h3 {
     margin: 0;
     font-size: 16px;
+    color: #333;
 }
 
 .status {
@@ -151,19 +165,16 @@ nav a:hover {
     height: 8px;
     border-radius: 50%;
     margin-right: 5px;
-}
-
-.status.online:before {
-    background-color: #4CAF50;
+    background-color: #66bb6a; /* Softer green */
 }
 
 .privacy-notice {
     padding: 15px 20px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e8e8e8;
 }
 
 .privacy-notice h4 {
-    color: #8a2be2;
+    color: #6A0DAD; /* Deep Dark Orchid */
     margin-bottom: 10px;
     font-size: 15px;
 }
@@ -175,11 +186,7 @@ nav a:hover {
 }
 
 .support-options {
-     background-color: white;
-    color: #8a2be2;
-    padding: 12px 16px;
-    border-radius: 12px;
-    margin-top: 10px;
+    background-color: #fcfcff;
     padding: 15px 20px;
     flex-grow: 1;
 }
@@ -202,41 +209,44 @@ nav a:hover {
 .support-options a {
     display: block;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 8px;
     color: #333;
     font-size: 14px;
     transition: all 0.2s;
 }
 
 .support-options a:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Lighter hover */
     text-decoration: none;
 }
 
 .support-options a.active {
-    background-color: #8a2be2;
+    background-color: #6A0DAD; /* Deep Dark Orchid */
     color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .exit-options {
     padding: 15px 20px;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #e8e8e8;
 }
 
 .quick-exit {
     width: 100%;
     padding: 12px;
-    background-color: #ff3d00;
+    background-color: #ff6b6b; /* Softer red */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s;
+    box-shadow: 0 3px 8px rgba(255, 107, 107, 0.3);
 }
 
 .quick-exit:hover {
-    background-color: #dd2c00;
+    background-color: #e05c5c;
+    box-shadow: 0 5px 10px rgba(255, 107, 107, 0.4);
 }
 
 .exit-info {
@@ -256,10 +266,11 @@ nav a:hover {
 
 .chat-header {
     padding: 15px 20px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e8e8e8;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #ffffff;
 }
 
 .chat-title h2 {
@@ -297,7 +308,7 @@ nav a:hover {
     flex-grow: 1;
     padding: 20px;
     overflow-y: auto;
-    background-color: white;
+    background-color: #ffffff;
 }
 
 .message-timestamp {
@@ -306,16 +317,16 @@ nav a:hover {
 }
 
 .message-timestamp span {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #f0f0f0; /* Slightly darker timestamp background */
     color: #666;
     font-size: 12px;
     padding: 3px 10px;
-    border-radius: 12px;
+    border-radius: 10px;
 }
 
 .message {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     align-items: flex-end;
     position: relative;
     max-width: 75%;
@@ -327,22 +338,24 @@ nav a:hover {
 }
 
 .message-content {
-    background-color: white;
-    color: #8a2be2;
+    background-color: #ffffff;
+    color: #333;
     padding: 12px 15px;
-    border-radius: 15px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     position: relative;
 }
 
 .message.counselor .message-content {
-    border-top-left-radius: 2px;
+    background-color: #f5eeff; /* Very light purple for counselor */
+    color: #333;
+    border-bottom-left-radius: 5px;
 }
 
 .message.user .message-content {
-    background-color: #8a2be2;
+    background-color: #6A0DAD; /* Deep Dark Orchid for user messages */
     color: white;
-    border-top-right-radius: 2px;
+    border-bottom-right-radius: 5px;
 }
 
 .message-content p {
@@ -362,7 +375,7 @@ nav a:hover {
 }
 
 .message.is-typing .message-content {
-    background-color: #f1f1f1;
+    background-color: #f5f5f5;
     padding: 8px;
 }
 
@@ -375,7 +388,7 @@ nav a:hover {
     height: 8px;
     width: 8px;
     margin: 0 2px;
-    background-color: #999;
+    background-color: #b0b0b0;
     border-radius: 50%;
     display: inline-block;
     animation: bounce 1.5s infinite ease-in-out;
@@ -400,14 +413,16 @@ nav a:hover {
 
 .chat-input {
     padding: 15px;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid #e8e8e8;
     display: flex;
-    align-items: center;
-    background-color: #fff;
+    align-items: flex-start;
+    background-color: #ffffff;
+    position: relative;
 }
 
 .input-options, .send-options {
     padding: 0 10px;
+    position: relative;
 }
 
 .input-options button, .send-options button {
@@ -427,19 +442,60 @@ nav a:hover {
     height: 24px;
 }
 
+/* Emoji Picker Styles */
+.emoji-picker-container {
+    position: absolute;
+    bottom: 60px; /* Adjust based on input height */
+    left: 10px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: none; /* Hidden by default */
+    z-index: 10;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-width: 250px; /* Limit width */
+}
+
+.emoji-picker-container.active {
+    display: flex; /* Show when active */
+}
+
+.emoji-picker-container span {
+    cursor: pointer;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.emoji-picker-container span:hover {
+    background-color: #f0f0f0;
+}
+
+
 textarea {
     flex-grow: 1;
-    border: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
     outline: none;
     resize: none;
     padding: 10px;
     font-size: 14px;
     font-family: inherit;
     max-height: 100px;
+    transition: border-color 0.2s, box-shadow 0.2s; /* Added box-shadow transition */
+}
+
+textarea:focus {
+    border-color: #6A0DAD; /* Deep Dark Orchid for focus */
+    box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.2); /* Subtle glow on focus */
 }
 
 .send-btn {
-    background-color: #8a2be2;
+    background-color: #6A0DAD; /* Deep Dark Orchid */
     border: none;
     width: 36px;
     height: 36px;
@@ -448,11 +504,13 @@ textarea {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
 }
 
 .send-btn:hover {
-    background-color: #c2185b;
+    background-color: #510a80; /* Slightly darker on hover */
+    transform: translateY(-1px);
 }
 
 .send-btn img {
@@ -463,8 +521,9 @@ textarea {
 
 .safety-alert {
     padding: 10px 15px;
-    background-color: #fff3e0;
-    border-top: 1px solid #ffcc80;
+    background-color: #fff8e1; /* Softer alert background */
+    border-top: 1px solid #ffeb3b; /* Softer alert border */
+    border-radius: 0 0 15px 15px;
 }
 
 .safety-alert p {
@@ -476,15 +535,15 @@ textarea {
 /* Resource Panel Styles */
 .resource-panel {
     width: 300px;
-    background-color: #fff;
-    border-left: 1px solid #e0e0e0;
+    background-color: #fcfcff; /* Very light, almost white */
+    border-left: 1px solid #e8e8e8;
     display: flex;
     flex-direction: column;
 }
 
 .panel-header {
     padding: 15px 20px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e8e8e8;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -502,12 +561,23 @@ textarea {
     font-size: 24px;
     color: #999;
     cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.close-panel:hover {
+    background-color: #eee;
 }
 
 .resource-categories {
     display: flex;
     padding: 10px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e8e8e8;
 }
 
 .category {
@@ -519,7 +589,7 @@ textarea {
     color: #666;
     cursor: pointer;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 8px;
     transition: all 0.2s;
 }
 
@@ -528,8 +598,9 @@ textarea {
 }
 
 .category.active {
-    background-color: #8a2be2;
+    background-color: #6A0DAD; /* Deep Dark Orchid */
     color: white;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
 }
 
 .resource-content {
@@ -541,7 +612,7 @@ textarea {
 .resource-item {
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0; /* Slightly darker border */
 }
 
 .resource-item:last-child {
@@ -564,13 +635,16 @@ textarea {
 .resource-link {
     display: inline-block;
     font-size: 13px;
-    color: #e91e63;
+    color: #DAA520; /* Goldenrod for an exotic accent */
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.2s, text-shadow 0.2s; /* Added text-shadow transition */
 }
 
 .resource-link:hover {
     text-decoration: underline;
+    color: #B8860B; /* Darker Goldenrod on hover */
+    text-shadow: 0 0 5px rgba(218, 165, 32, 0.5); /* Subtle glow on hover */
 }
 
 .resource-list {
@@ -601,7 +675,7 @@ textarea {
         width: 100%;
         height: auto;
         border-right: none;
-        border-bottom: 1px solid #e0e0e0;
+        border-bottom: 1px solid #e8e8e8;
     }
     
     .privacy-notice, .support-options {

@@ -9,21 +9,15 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
 
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'Qwerty123');
-define('DB_NAME', 'login_system');
-define('DB_PORT', 3306); 
-
-$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PORT);
-
+$conn = new mysqli("localhost", "root", "Qwerty123", "registration_db", 3306);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
     if (empty(trim($_POST["username"]))) {
-        $username_err = "Please enter username.";
+        $username_err = "Please enter your username.";
     } else {
         $username = trim($_POST["username"]);
     }
@@ -36,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($username_err) && empty($password_err)) {
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
-
+        
         if ($stmt = $conn->prepare($sql)) {
             $stmt->bind_param("s", $param_username);
             $param_username = $username;
@@ -47,22 +41,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($stmt->num_rows == 1) {
                     $stmt->bind_result($id, $username, $hashed_password);
                     if ($stmt->fetch()) {
+                        
                         if (password_verify($password, $hashed_password)) {
                             session_start();
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
+                           
                             header("location: home.php");
                             exit;
                         } else {
-                            $login_err = "Incorrect password.";
+                            $login_err = "Invalid password.";
                         }
                     }
                 } else {
-                    $login_err = "Something went wrong while fetching user data.";
+                    $login_err = "No account found with that username.";
                 }
             } else {
-                echo "Oops! Something went wrong. Please try again later.";
+                $login_err = "Oops! Something went wrong. Please try again later.";
             }
             $stmt->close();
         }
@@ -71,13 +67,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../css/loginstyle.css">
+    <link rel="stylesheet" href="css/loginstyle.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
