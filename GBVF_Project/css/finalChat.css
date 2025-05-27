@@ -42,7 +42,7 @@ body {
 }
 
 header {
-    background-color: #6A0DAD; /* Deep Dark Orchid for an exotic feel */
+    background-color: #4B164C; /* Deep Plum/Magenta */
     padding: 1rem 5%;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
     position: sticky;
@@ -98,7 +98,7 @@ nav a.active {
 
 /* Chat Room Specific Styles */
 .chat-page {
-    background-color: #f5f5f5; /* Slightly darker light background for contrast */
+    background-color: #F5F5F5; /* Light Gray */
     /* Added subtle background texture */
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0e0e0' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5zM1 0h1L0 2V1z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
 }
@@ -111,13 +111,13 @@ nav a.active {
     overflow: hidden;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2); /* Even more pronounced shadow */
     background-color: #fff;
-    border: 1px solid rgba(106, 13, 173, 0.1); /* Subtle border matching primary color */
+    border: 1px solid rgba(75, 22, 76, 0.1); /* Subtle border matching primary color */
 }
 
 /* Sidebar Styles */
 .chat-sidebar {
     width: 280px;
-    background-color: #fcfcff; /* Very light, almost white */
+    background-color: #F8E7F6; /* Very Light Orchid Pink */
     border-right: 1px solid #e8e8e8;
     display: flex;
     flex-direction: column;
@@ -135,7 +135,7 @@ nav a.active {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #6A0DAD; /* Deep Dark Orchid */
+    background-color: #4B164C; /* Deep Plum/Magenta */
     color: #fff;
     display: flex;
     align-items: center;
@@ -174,7 +174,7 @@ nav a.active {
 }
 
 .privacy-notice h4 {
-    color: #6A0DAD; /* Deep Dark Orchid */
+    color: #4B164C; /* Deep Plum/Magenta */
     margin-bottom: 10px;
     font-size: 15px;
 }
@@ -186,7 +186,7 @@ nav a.active {
 }
 
 .support-options {
-    background-color: #fcfcff;
+    background-color: #F8E7F6; /* Very Light Orchid Pink */
     padding: 15px 20px;
     flex-grow: 1;
 }
@@ -221,7 +221,7 @@ nav a.active {
 }
 
 .support-options a.active {
-    background-color: #6A0DAD; /* Deep Dark Orchid */
+    background-color: #4B164C; /* Deep Plum/Magenta */
     color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -264,6 +264,94 @@ nav a.active {
     overflow: hidden;
 }
 
+/* Counselor Selection Panel Styles */
+.counselor-selection-panel {
+    flex-grow: 1;
+    display: flex; /* Changed to flex */
+    flex-direction: column;
+    padding: 30px; /* More padding */
+    background-color: #ffffff; /* White background */
+    justify-content: center; /* Center content */
+    align-items: center; /* Center content */
+    text-align: center;
+}
+
+.counselor-selection-panel .panel-header {
+    border-bottom: none; /* Remove border */
+    margin-bottom: 30px; /* More space */
+    width: 100%;
+}
+
+.counselor-selection-panel .panel-header h3 {
+    font-size: 24px; /* Larger heading */
+    color: #4B164C;
+}
+
+.counselor-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive grid */
+    gap: 25px; /* More gap */
+    padding-top: 10px;
+    overflow-y: auto; /* Allow scrolling if many counselors */
+    max-width: 900px; /* Limit width */
+    width: 100%;
+}
+
+.counselor-card {
+    background-color: #F8E7F6; /* Very Light Orchid Pink */
+    border-radius: 15px; /* More rounded cards */
+    padding: 25px; /* More padding */
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.counselor-card:hover {
+    transform: translateY(-8px); /* More lift effect on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
+
+.counselor-avatar {
+    width: 90px; /* Larger avatar */
+    height: 90px;
+    border-radius: 50%;
+    background-color: #DD88CF; /* Soft Orchid Pink */
+    color: white;
+    font-size: 40px; /* Larger font size for initial */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    border: 4px solid #4B164C; /* Deep Plum/Magenta border */
+}
+
+.counselor-card h4 {
+    margin: 0 0 8px; /* Adjusted margin */
+    font-size: 18px; /* Slightly larger font */
+    color: #4B164C; /* Deep Plum/Magenta */
+}
+
+.counselor-card p {
+    font-size: 14px; /* Slightly larger font */
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Chat Interface Styles - Gemini-like */
+.chat-interface {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
 .chat-header {
     padding: 15px 20px;
     border-bottom: 1px solid #e8e8e8;
@@ -286,17 +374,22 @@ nav a.active {
     display: block;
 }
 
+.chat-actions {
+    display: flex;
+    gap: 10px; /* Space between icons */
+}
+
 .chat-actions button {
     background: none;
     border: none;
     cursor: pointer;
-    margin-left: 10px;
-    opacity: 0.7;
-    transition: opacity 0.2s;
+    opacity: 0.8; /* Slightly more opaque */
+    transition: opacity 0.2s, transform 0.2s;
 }
 
 .chat-actions button:hover {
     opacity: 1;
+    transform: scale(1.1);
 }
 
 .chat-actions img {
@@ -313,49 +406,54 @@ nav a.active {
 
 .message-timestamp {
     text-align: center;
-    margin: 15px 0;
+    margin: 20px 0 10px; /* Adjusted margin */
 }
 
 .message-timestamp span {
-    background-color: #f0f0f0; /* Slightly darker timestamp background */
+    background-color: #F5F5F5; /* Light Gray */
     color: #666;
     font-size: 12px;
-    padding: 3px 10px;
-    border-radius: 10px;
+    padding: 4px 12px; /* Adjusted padding */
+    border-radius: 12px; /* More rounded */
 }
 
 .message {
     display: flex;
-    margin-bottom: 15px;
-    align-items: flex-end;
+    margin-bottom: 12px; /* Slightly less margin for tighter bubbles */
+    align-items: flex-end; /* Align content to the bottom of the bubble */
     position: relative;
-    max-width: 75%;
+    max-width: 80%; /* Allow more width for messages */
 }
 
 .message.user {
     margin-left: auto;
-    flex-direction: row-reverse;
+    flex-direction: row-reverse; /* For user messages, time on right */
+    justify-content: flex-end;
+}
+
+.message.counselor {
+    margin-right: auto;
+    flex-direction: row; /* For counselor messages, time on left */
+    justify-content: flex-start;
 }
 
 .message-content {
-    background-color: #ffffff;
-    color: #333;
-    padding: 12px 15px;
-    border-radius: 18px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 10px 15px; /* Adjust padding */
+    border-radius: 18px; /* More uniform rounded corners */
+    box-shadow: none; /* Remove individual message shadows for a flatter look */
     position: relative;
+    max-width: 100%; /* Ensure content respects message max-width */
+    word-wrap: break-word; /* Ensure long words wrap */
 }
 
 .message.counselor .message-content {
-    background-color: #f5eeff; /* Very light purple for counselor */
+    background-color: #f0f0f0; /* Light grey for counselor */
     color: #333;
-    border-bottom-left-radius: 5px;
 }
 
 .message.user .message-content {
-    background-color: #6A0DAD; /* Deep Dark Orchid for user messages */
+    background-color: #4B164C; /* Deep Plum/Magenta for user messages */
     color: white;
-    border-bottom-right-radius: 5px;
 }
 
 .message-content p {
@@ -365,17 +463,23 @@ nav a.active {
 }
 
 .message-time {
-    font-size: 11px;
+    font-size: 10px; /* Smaller timestamp */
     color: #999;
-    margin: 0 5px;
+    align-self: flex-end; /* Align time to bottom of bubble */
+    margin: 0 5px; /* Adjust margin */
+    white-space: nowrap; /* Prevent time from wrapping */
 }
 
 .message.user .message-time {
-    text-align: right;
+    order: 0; /* Place time before content for user messages */
+}
+
+.message.counselor .message-time {
+    order: 1; /* Place time after content for counselor messages */
 }
 
 .message.is-typing .message-content {
-    background-color: #f5f5f5;
+    background-color: #F5F5F5; /* Light Gray */
     padding: 8px;
 }
 
@@ -412,16 +516,17 @@ nav a.active {
 }
 
 .chat-input {
-    padding: 15px;
+    padding: 10px 15px; /* Reduced padding */
     border-top: 1px solid #e8e8e8;
     display: flex;
-    align-items: flex-start;
+    align-items: center; /* Align items vertically in center */
     background-color: #ffffff;
     position: relative;
+    gap: 10px; /* Space between elements */
 }
 
 .input-options, .send-options {
-    padding: 0 10px;
+    padding: 0; /* Remove padding here */
     position: relative;
 }
 
@@ -429,12 +534,20 @@ nav a.active {
     background: none;
     border: none;
     cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 0.2s;
+    opacity: 0.8; /* Keep icons visible */
+    transition: opacity 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; /* Uniform size */
+    height: 36px;
+    border-radius: 50%; /* Make them circular */
 }
 
 .input-options button:hover, .send-options button:hover {
     opacity: 1;
+    background-color: #f0f0f0; /* Subtle hover effect */
+    transform: scale(1.1);
 }
 
 .input-options img, .send-options img {
@@ -479,43 +592,45 @@ nav a.active {
 textarea {
     flex-grow: 1;
     border: 1px solid #e0e0e0;
-    border-radius: 10px;
+    border-radius: 25px; /* More rounded input field */
     outline: none;
     resize: none;
-    padding: 10px;
+    padding: 10px 15px; /* Adjusted padding */
     font-size: 14px;
     font-family: inherit;
-    max-height: 100px;
-    transition: border-color 0.2s, box-shadow 0.2s; /* Added box-shadow transition */
+    min-height: 40px; /* Minimum height for single line */
+    max-height: 120px; /* Limit expansion */
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: none; /* No default shadow */
 }
 
 textarea:focus {
-    border-color: #6A0DAD; /* Deep Dark Orchid for focus */
-    box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.2); /* Subtle glow on focus */
+    border-color: #4B164C; /* Deep Plum/Magenta for focus */
+    box-shadow: 0 0 0 3px rgba(75, 22, 76, 0.2); /* Subtle glow on focus */
 }
 
 .send-btn {
-    background-color: #6A0DAD; /* Deep Dark Orchid */
+    background-color: #4B164C; /* Deep Plum/Magenta */
     border: none;
-    width: 36px;
-    height: 36px;
+    width: 40px; /* Slightly larger button */
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.1s;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Softer shadow */
 }
 
 .send-btn:hover {
-    background-color: #510a80; /* Slightly darker on hover */
+    background-color: #3a113b; /* Slightly darker on hover */
     transform: translateY(-1px);
 }
 
 .send-btn img {
-    width: 18px;
-    height: 18px;
+    width: 20px; /* Larger icon */
+    height: 20px;
     filter: brightness(0) invert(1);
 }
 
@@ -535,7 +650,7 @@ textarea:focus {
 /* Resource Panel Styles */
 .resource-panel {
     width: 300px;
-    background-color: #fcfcff; /* Very light, almost white */
+    background-color: #F8E7F6; /* Very Light Orchid Pink */
     border-left: 1px solid #e8e8e8;
     display: flex;
     flex-direction: column;
@@ -598,7 +713,7 @@ textarea:focus {
 }
 
 .category.active {
-    background-color: #6A0DAD; /* Deep Dark Orchid */
+    background-color: #4B164C; /* Deep Plum/Magenta */
     color: white;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
 }
@@ -638,7 +753,7 @@ textarea:focus {
     color: #DAA520; /* Goldenrod for an exotic accent */
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.2s, text-shadow 0.2s; /* Added text-shadow transition */
+    transition: color 0.2s, text-shadow 0.2s;
 }
 
 .resource-link:hover {
@@ -670,23 +785,54 @@ textarea:focus {
         flex-direction: column;
         height: calc(100vh - 70px);
     }
-    
+
     .chat-sidebar {
         width: 100%;
         height: auto;
         border-right: none;
         border-bottom: 1px solid #e8e8e8;
     }
-    
+
     .privacy-notice, .support-options {
         display: none;
     }
-    
+
     .chat-main {
         height: 100%;
     }
-    
+
     .message {
         max-width: 85%;
+    }
+
+    .counselor-selection-panel {
+        padding: 20px;
+    }
+
+    .counselor-selection-panel .panel-header h3 {
+        font-size: 20px;
+    }
+
+    .counselor-list {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+    .counselor-card {
+        padding: 15px;
+    }
+
+    .counselor-avatar {
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
+    }
+
+    .counselor-card h4 {
+        font-size: 16px;
+    }
+
+    .counselor-card p {
+        font-size: 12px;
     }
 }

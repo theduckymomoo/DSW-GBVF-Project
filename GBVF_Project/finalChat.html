@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Safe Haven Chat Room | Ukhuseleko</title>
-    <link rel="stylesheet" href="css/finalChat.css">
+    <link rel="stylesheet" href="../css/finalChat.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="chat-page">
@@ -20,7 +20,7 @@
         
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="home.php">Home</a></li>
                 <li><a href="#">Resources</a></li>
                 <li><a href="legal.html">Support</a></li>
                 <li><a href="gbv.html">GBV</a></li>
@@ -51,7 +51,7 @@
             <div class="support-options">
                 <h4>Support Options</h4>
                 <ul>
-                    <li><a href="#" class="counselor-chat active">Chat with Counselor</a></li>
+                    <li><a href="#" class="counselor-chat active" id="chatWithCounselorLink">Chat with Counselor</a></li>
                     <li><a href="#" class="support-group">Support Group</a></li>
                     <li><a href="#" class="resources">Safety Resources</a></li>
                 </ul>
@@ -66,51 +66,54 @@
         </div>
         
         <div class="chat-main">
-            <div class="chat-header">
-                <div class="chat-title">
-                    <h2>Chat with Support Counselor</h2>
-                    <span class="counselor-status">Zandi is typing...</span>
+            <div id="counselorSelectionPanel" class="counselor-selection-panel" style="display: none;">
+                <div class="panel-header">
+                    <h3>Select a Counselor</h3>
                 </div>
-                <div class="chat-actions">
-                    <button class="clear-chat" title="Clear chat history">
-                        <img src="images/clear-button.png" alt="Clear">
-                    </button>
-                    <button class="download-chat" title="Download chat transcript">
-                        <img src="images/download.png" alt="Download">
-                    </button>
-                </div>
-            </div>
-            
-            <div class="chat-messages" id="chatMessages">
-                <div class="message-timestamp">
-                    <span>Today, 14:30</span>
-                </div>
-                
-                <div class="message counselor">
-                    <div class="message-content">
-                        <p>Hello and welcome to Safe Haven. My name is Zandi and I'm here to support you. Everything you share is confidential. How can I help you today?</p>
+                <div class="counselor-list">
                     </div>
-                    <div class="message-time">14:30</div>
+            </div>
+
+            <div id="chatInterface" class="chat-interface">
+                <div class="chat-header">
+                    <div class="chat-title">
+                        <h2>Chat with <span id="currentCounselorName">Counselor</span></h2>
+                        <span class="counselor-status">Online</span>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="clear-chat" title="Clear chat history">
+                            <img src="images/clear-button.png" alt="Clear">
+                        </button>
+                        <button class="download-chat" title="Download chat transcript">
+                            <img src="images/download.png" alt="Download">
+                        </button>
+                    </div>
                 </div>
                 
+                <div class="chat-messages" id="chatMessages">
+                    </div>
+                
+                <div class="chat-input">
+                    <div class="input-options">
+                        <button class="emoji-btn" title="Insert emoji">
+                            <img src="images/emoji-icon.png" alt="Emoji">
+                        </button>
+                        <div id="emojiPicker" class="emoji-picker-container">
+                            </div>
+                    </div>
+                    <textarea id="messageInput" placeholder="Type your message here..." rows="2"></textarea>
+                    <div class="send-options">
+                        <button class="send-btn" id="sendMessage">
+                            <img src="images/send-icon.png" alt="Send">
+                        </button>
+                        <div id="emojiPicker" class="emoji-picker-container">
+    </div>
+                    </div>
                 </div>
-            
-            <div class="chat-input">
-                <div class="input-options">
-                    <button class="emoji-btn" title="Insert emoji">
-                        <img src="images/emoji-icon.png" alt="Emoji">
-                    </button>
+                
+                <div class="safety-alert">
+                    <p><strong>Safety Note:</strong> If you're in immediate danger, please call emergency services at <strong>10111</strong> or the GBV Command Centre at <strong>0800 428 428</strong>.</p>
                 </div>
-                <textarea id="messageInput" placeholder="Type your message here..." rows="2"></textarea>
-                <div class="send-options">
-                    <button class="send-btn" id="sendMessage">
-                        <img src="images/send-icon.png" alt="Send">
-                    </button>
-                </div>
-            </div>
-            
-            <div class="safety-alert">
-                <p><strong>Safety Note:</strong> If you're in immediate danger, please call emergency services at <strong>10111</strong> or the GBV Command Centre at <strong>0800 428 428</strong>.</p>
             </div>
         </div>
         
@@ -152,6 +155,6 @@
         </div>
     </div>
     
-    <script src="js/finalChat.js"></script>
+    <script src="../js/finalChat.js"></script>
 </body>
 </html>

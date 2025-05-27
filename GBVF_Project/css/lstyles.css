@@ -199,6 +199,58 @@ footer a:hover {
     flex: 1;
 }
 
+/* Language Selector Styling (Copied from styles.css) */
+.language-selector-fixed {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 1000;
+    background-color: #4B164C; /* Changed to match primary color */
+    padding: 0.8rem 1.2rem;
+    border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.language-selector-fixed:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.language-selector-fixed select {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    /* Using a fallback font if Montserrat is not available in lstyles.css */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding-right: 20px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+}
+
+.language-selector-fixed select {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px top 50%;
+    background-size: 18px auto;
+}
+
+.language-selector-fixed select::-ms-expand {
+    display: none;
+}
+
+.language-selector-fixed select option {
+    background-color: #4B164C; /* Changed to match primary color */
+    color: white;
+}
+
 @media (max-width: 768px) {
     header {
         padding: 1.5rem 0;
@@ -223,6 +275,16 @@ footer a:hover {
     
     section h2 {
         font-size: 1.5rem;
+    }
+
+    .language-selector-fixed {
+        bottom: 1rem;
+        left: 1rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .language-selector-fixed select {
+        font-size: 0.9rem;
     }
 }
 
