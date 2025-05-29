@@ -2,117 +2,143 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
 }
 
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, rgb(75, 22, 76), rgb(248, 231, 246));
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: #f5f5f5;
+    padding: 20px;
 }
 
-.wrapper {
-    width: 420px;
-    background-color: #8a2be2; 
-    border-radius: 10px; 
-    padding: 30px 40px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.wrapper h1 { 
-    font-size: 36px;
-    text-align: center;
-    color: white; 
-    margin-bottom: 10px;
-}
-
-.wrapper .input-box {
+form {
+    background-color: rgb(245, 245, 245);
+    padding: 40px 30px;
+    border: 2px solid #4b164c;
+    border-radius: 12px;
+    border-color:rgb(75, 22, 76) ;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    box-shadow: 0 8px 16px rgba(75, 22, 76, 0.2);
+    transition: all 0.3s ease;
     position: relative;
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
+    z-index: 10;
 }
 
-.input-box input {
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 40px;
-    font-size: 16px;
-    color: white;
-    padding: 20px 45px 20px 20px;
+.login-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #4b164c;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.input-box input::placeholder {
-    color: rgba(255, 255, 255, 0.7); 
+form:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(75, 22, 76, 0.4);
+    background-color: rgb(248, 231, 246);
 }
 
-.input-box i {
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i {
     position: absolute;
-    right: 20px;
     top: 50%;
+    left: 12px;
     transform: translateY(-50%);
-    font-size: 20px;
-    color: white;
+    color: #888;
+    font-size: 18px;
 }
 
-.wrapper .remember-forget {
+.input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+    font-size: 15px;
+    transition: all 0.3s;
+    background-color: white;
+}
+
+.input-group input:focus {
+    border-color: #5b247a;
+    box-shadow: 0 0 5px rgba(75, 22, 76, 0.3);
+}
+
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+
+.options {
     display: flex;
     justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-    color: white; 
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
 }
 
-.remember-forget label input {
-    accent-color: white;
-    margin-right: 3px;
-}
-
-.remember-forget a {
-    color: white;
+.options a {
+    color: #5b247a;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
-.remember-forget a:hover {
+.options a:hover {
     text-decoration: underline;
+    color: #2e0b30;
 }
 
-.wrapper .btn {
+.btn {
     width: 100%;
-    height: 45px;
-    background-color: white;
+    padding: 12px;
+    background-color: #5b247a;
+    color: #fff;
     border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    color: #8a2be2; 
-    font-weight: 600;
-    transition: 0.3s ease; 
+    transition: background-color 0.3s;
 }
 
-.wrapper .btn:hover {
-    background-color: rgba(255, 255, 255, 0.8); 
+.btn:hover {
+    background-color: #4a1f63;
 }
 
-.wrapper .register-link {
-    font-size: 14.5px;
+.register-link {
     text-align: center;
-    margin: 20px 0 15px;
-    color: white; 
+    margin-top: 20px;
+    font-size: 14px;
 }
 
-.register-link p a {
-    color: #ffe0fd; 
+.register-link a {
+    color: #5b247a;
     text-decoration: none;
-    font-weight: 600;
 }
 
-.register-link p a:hover {
+.register-link a:hover {
     text-decoration: underline;
+}
+
+.alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #e6a8a8;
 }

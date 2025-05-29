@@ -15,7 +15,6 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
     if (empty(trim($_POST["username"]))) {
         $username_err = "Please enter your username.";
     } else {
@@ -30,24 +29,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (empty($username_err) && empty($password_err)) {
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
-        
         if ($stmt = $conn->prepare($sql)) {
             $stmt->bind_param("s", $param_username);
             $param_username = $username;
-
             if ($stmt->execute()) {
                 $stmt->store_result();
-
                 if ($stmt->num_rows == 1) {
                     $stmt->bind_result($id, $username, $hashed_password);
                     if ($stmt->fetch()) {
-                        
                         if (password_verify($password, $hashed_password)) {
-                            session_start();
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
-                           
                             header("location: home.php");
                             exit;
                         } else {
@@ -63,10 +56,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->close();
         }
     }
-
     $conn->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,38 +71,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <div class="wrapper">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <h1>Login</h1>
+    <div class="container">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="login-form">
+            <h2>Login</h2>
             <?php 
             if(!empty($login_err)){
                 echo '<div class="alert">' . $login_err . '</div>';
             }        
             ?>
-            <div class="input-box">
-                <input type="text" name="username" placeholder="Username" required 
-                class="<?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo htmlspecialchars($username); ?>">
+            <div class="input-group">
                 <i class='bx bxs-user'></i>
+                <input type="text" name="username" placeholder="Username" value="<?php echo htmlspecialchars($username); ?>" required>
+                <?php if(!empty($username_err)): ?>
+                    <span class="error"><?php echo $username_err; ?></span>
+                <?php endif; ?>
             </div>
-
-            <div class="input-box">
-                <input type="password" name="password" placeholder="Password" required 
-                class="<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+            <div class="input-group">
                 <i class='bx bxs-lock-alt'></i>
+                <input type="password" name="password" placeholder="Password" required>
+                <?php if(!empty($password_err)): ?>
+                    <span class="error"><?php echo $password_err; ?></span>
+                <?php endif; ?>
             </div>
-
-            <div class="remember-forget">
-                 <label><input type="checkbox">Remember Me</label>
-                 <a href="#">Forget Password?</a>
+            <div class="options">
+                <a href="#">Forgot Password?</a>
             </div>
-
             <button type="submit" class="btn">Login</button>
-
-            <div class="register-link">
-                <p>Don't have an account?
-                    <a href="register.php">Register</a>
-                </p>
-            </div>
+            <p class="register-link">Don't have an account? <a href="register.php">Register</a></p>
         </form>
     </div>
 </body>

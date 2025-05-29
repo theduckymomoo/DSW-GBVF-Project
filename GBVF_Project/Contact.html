@@ -8,27 +8,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="../images/logo-swap-removebg.png" alt="Ukhuseleko Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="legal.html">Resources</a></li>
-                <li><a href="">Support</a></li>
-                <li><a href="gbv.html">GBV</a></li>
-                <li><a href="finalChat.html" class="active">Safe Haven</a></li>
-                <li><a href="share.html">Share Your Story</a></li>
-                <li><a href="Contact.html">Contact Us</a></li>  
-            </ul>
-        </nav>
-    </header>
+    <nav class="main-nav-sticky">
+        <ul>
+            <li><a href="home.php" data-translate="nav-home">Home</a></li>
+            <li><a href="legal.html" data-translate="nav-resources">Resources</a></li>
+            <li><a href="support.html" data-translate="nav-support">Support</a></li>
+            <li><a href="gbv.html" data-translate="nav-gbv">GBV</a></li>
+            <li><a href="finalChat.html" data-translate="nav-safe-haven">Safe Haven</a></li>
+            <li><a href="share.html" data-translate="nav-share-story">Share Your Story</a></li>
+            <li><a href="Contact.html" data-translate="nav-contact-us">Contact Us</a></li>
+        </ul>
+    </nav> 
+    
+    <div class="language-selector-fixed">
+        <select id="languageSelect" aria-label="Select Language">
+            <option value="en">English</option>
+            <option value="af">Afrikaans</option>
+            <option value="nso">Sepedi</option>
+            <option value="st">Sesotho</option>
+            <option value="ss">Siswati</option>
+            <option value="tn">Setswana</option>
+            <option value="ts">Xitsonga</option>
+            <option value="ve">Tshivenḓa</option>
+            <option value="xh">isiXhosa</option>
+            <option value="zu">isiZulu</option>
+            <option value="nr">isiNdebele</option>
+        </select>
+    </div>
 
-    <section class="hero">
-        <h1>About Ukhuseleko</h1>
+    <header>
+        <img src="../images/logo-swap-removebg.png" alt="Company Logo" id="header-logo">
+         <h1>About Ukhuseleko</h1>
         <p>Creating a South Africa free from domestic violence through education, advocacy, support services, and empowerment initiatives.</p>
-    </section>
+    </header>
 
     <section class="mission">
         <div class="mission-header">
@@ -82,5 +94,32 @@
         <p>Together, we can create a safer South Africa for everyone. Volunteers, donors, and advocates are the foundation of our work.</p>
         <a href="login.html" class="cta-button">Get Involved</a>
     </section>
+
+        <script src="../js/gbv.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the current page's filename (e.g., "gbv.html")
+            const currentPath = window.location.pathname;
+            const currentPageFilename = currentPath.split('/').pop();
+
+            // Select all navigation links in the first nav element (which is now the sticky nav)
+            const mainNavLinks = document.querySelectorAll('.main-nav-sticky ul li a');
+
+            mainNavLinks.forEach(link => {
+                // Get the filename from the link's href attribute
+                const linkFilename = link.getAttribute('href').split('/').pop();
+
+                // Remove any existing 'active' or 'active-page' classes
+                link.classList.remove('active', 'active-page');
+                link.removeAttribute('aria-current'); // Remove aria-current for all links first
+
+                // Check if the link's filename matches the current page's filename
+                if (linkFilename === currentPageFilename) {
+                    link.classList.add('active-page');
+                    link.setAttribute('aria-current', 'page'); // Set aria-current for the active link
+                }
+            });
+        });
+    </script>
 </body>
 </html>

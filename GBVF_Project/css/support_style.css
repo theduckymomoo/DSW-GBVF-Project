@@ -1,4 +1,4 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -46,14 +46,16 @@ header {
     border-top-right-radius: 8px;
 }
 
+
 #header-logo {
-  position: absolute;
-  top: 3rem;
-  left: 4rem;
-  width: 150px;
-  height: auto;
-  z-index: 103;
-  border-radius: 8px;
+    position: absolute;
+    top: 3rem;
+    left: 4rem;
+    width: 150px;
+    height: auto;
+    z-index: 103;
+    border-radius: 8px;
+
 }
 
 header h1 {
@@ -71,10 +73,10 @@ header p {
 }
 
 nav {
-  background-color: rgb(75, 22, 76);
-  padding: 0.8rem 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  position: sticky;
+    background-color: rgb(75, 22, 76);
+    padding: 0.8rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: sticky;
     top: 0;
     left: 0; 
     transform: none; 
@@ -155,6 +157,7 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
+
 .main-nav-sticky a.active-page {
     background-color: rgb(245, 245, 245); 
     color: rgb(75, 22, 76); 
@@ -167,131 +170,89 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-.emergency-banner {
-    background-color: rgb(248, 231, 246); 
-    border-left: 5px solid rgb(221, 136, 207); 
-    padding: 1rem 1.5rem;
-    margin: 1.5rem auto;
+.footer-container {
     max-width: 1200px;
+    margin: 3rem auto 1rem;
+    padding: 1.5rem;
+    background-color: rgb(75, 22, 76); 
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-.emergency-banner h3 {
-    color: rgb(221, 136, 207); 
+footer {
+    background-color: transparent;
+    color: rgb(245, 245, 245);
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+footer p {
     margin-bottom: 0.5rem;
-    font-size: 1.2rem;
+    color: inherit;
 }
 
-.emergency-banner p {
+footer a {
+    color: rgb(248, 231, 246);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+footer a:hover {
+    color: rgb(245, 245, 245);
+}
+
+
+.language-selector-fixed {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 1000;
+    background-color: rgb(75, 22, 76);
+    padding: 0.8rem 1.2rem;
+    border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.language-selector-fixed:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.language-selector-fixed select {
+    background-color: transparent;
+    border: none;
+    color: rgb(245, 245, 245);
     font-size: 1rem;
-    color: rgb(75, 22, 76); 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding-right: 20px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
 }
 
-.hero {
-  background-color: rgb(248, 231, 246);
-  padding: 5rem 0;
-  text-align: center;
-  margin-bottom: 3rem;
+.language-selector-fixed select {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23FFFFFF" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px top 50%;
+    background-size: 18px auto;
 }
 
-.hero h1 {
-  color: rgb(75, 22, 76);
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.language-selector-fixed select::-ms-expand {
+    display: none;
 }
 
-.hero p {
-  max-width: 800px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  color: #555;
-}
-
-.mission-header {
-  text-align: center;
-}
-
-.mission-grid {
-  text-align: center;
-}
-
-.our-mission, .core-values, .what-we-do, .our-impact {
-  margin: 80px;
-}
-
-.our-mission h3,
-.core-values h3,
-.what-we-do h3,
-.our-impact h3 {
-  color: rgb(221, 136, 207);
-}
-
-.our-mission ul,
-.core-values ul,
-.what-we-do ul,
-.our-impact ul {
-  list-style-type: none;
-}
-
-.mission {
-  max-width: 1200px;
-  margin: 0 auto 3rem;
-  padding: 0 1.5rem;
-}
-
-.footer-note {
-  text-align: center;
-  max-width: 800px;
-  margin: 3rem auto;
-  padding: 2rem 1.5rem;
-  background-color: rgb(248, 231, 246);
-  color: rgb(75, 22, 76);
-  font-size: 1.1rem;
-  font-style: italic;
-  line-height: 1.8;
-}
-
-.cta {
-  background-color: rgb(221, 136, 207);
-  color: white;
-  text-align: center;
-  padding: 4rem 1.5rem;
-  margin-top: 3rem;
-}
-
-.cta h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.cta p {
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  font-size: 1.1rem;
-}
-
-.cta-button {
-  display: inline-block;
-  background-color: rgb(245, 245, 245);
-  color: rgb(221, 136, 207);
-  padding: 0.8rem 2rem;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-}
-
-.cta-button:hover {
-  background-color: rgb(248, 231, 246);
-  transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+.language-selector-fixed select option {
+    background-color: rgb(75, 22, 76);
+    color: rgb(245, 245, 245);
 }
 
 @media (max-width: 768px) {

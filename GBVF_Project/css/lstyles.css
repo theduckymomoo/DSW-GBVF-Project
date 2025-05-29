@@ -4,40 +4,116 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f8f8f8;
+    color: rgb(75, 22, 76);
+    background-color: rgb(248, 231, 246);
     padding: 0 15px;
+    padding-top: 0; 
+}
+
+.language-selector-fixed,
+.main-nav-sticky a, 
+nav a, 
+#understanding, #protection-order, #considerations, #resources,
+#resources .resource-item,
+footer a {
+    transition: all 0.3s ease;
 }
 
 header {
-    background-color: #8a2be2;
+    background-image: url("../images/flower3.jpg");
+    background-size: 33% auto;
+    background-repeat: repeat-x;
+    background-position: top left;
+    background-color: rgb(221, 136, 207);
+    background-blend-mode: overlay;
     padding: 2rem 0;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     position: relative;
     text-align: center;
     border-radius: 0 0 8px 8px;
     margin-bottom: 2rem;
+    margin-top: -3rem; 
+    padding-top: 5rem; 
+    z-index: 99; 
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 header h1 {
-    color: white;
+    color: rgb(75, 22, 76); 
     font-size: 2.2rem;
     margin-bottom: 0.5rem;
     font-weight: 700;
 }
 
 header p {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgb(75, 22, 76); 
     font-size: 1.1rem;
     max-width: 800px;
     margin: 0 auto;
 }
 
+.main-nav-sticky {
+    background-color: rgb(75, 22, 76); 
+    padding: 0.8rem 0;
+    border-radius: 8px;
+    margin: 0 auto; 
+    max-width: 1200px;
+    width: calc(100% - 30px); 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-nav-sticky ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.main-nav-sticky li {
+    margin: 0.5rem 1rem;
+}
+
+.main-nav-sticky a {
+    color: rgb(245, 245, 245);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.main-nav-sticky a:hover {
+    background-color: rgba(245, 245, 245, 0.25);
+    transform: translateY(-2px);
+}
+
+.main-nav-sticky a.active-page {
+    background-color: rgb(245, 245, 245);
+    color: rgb(75, 22, 76);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+
+.main-nav-sticky a.active-page:hover {
+    background-color: rgb(248, 231, 246);
+    transform: translateY(-2px);
+}
+
 nav {
-    background-color: #7b25cb; 
+    background-color: rgb(75, 22, 76);
     padding: 0.8rem 0;
     border-radius: 8px;
     margin: 1.5rem auto;
@@ -57,23 +133,22 @@ nav li {
 }
 
 nav a {
-    color: white;
+    color: rgb(245, 245, 245);
     text-decoration: none;
     font-weight: 600;
     padding: 0.6rem 1rem;
     border-radius: 4px;
-    transition: all 0.3s ease;
     display: inline-block;
 }
 
 nav a:hover {
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(245, 245, 245, 0.25);
     transform: translateY(-2px);
 }
 
 .emergency-banner {
-    background-color: #fff0f3;
-    border-left: 5px solid #e83e8c;
+    background-color: rgb(248, 231, 246);
+    border-left: 5px solid rgb(221, 136, 207);
     padding: 1rem 1.5rem;
     margin: 1.5rem auto;
     max-width: 1200px;
@@ -82,21 +157,21 @@ nav a:hover {
 }
 
 .emergency-banner h3 {
-    color: #e83e8c;
+    color: rgb(221, 136, 207);
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
 }
 
 .emergency-banner p {
     font-size: 1rem;
-    color: #333;
+    color: rgb(75, 22, 76);
 }
 
 #understanding, #protection-order, #considerations, #resources {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 1.8rem;
-    background-color: white;
+    background-color: rgb(248, 231, 246);
     border-radius: 8px;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -108,10 +183,10 @@ nav a:hover {
 }
 
 section h2 {
-    color: #8a2be2;
+    color: rgb(221, 136, 207);
     margin-bottom: 1.2rem;
     font-size: 1.8rem;
-    border-bottom: 2px solid #e6d9ff;
+    border-bottom: 2px solid rgb(248, 231, 246);
     padding-bottom: 0.8rem;
 }
 
@@ -119,6 +194,7 @@ section p {
     margin-bottom: 1.2rem;
     font-size: 1.05rem;
     line-height: 1.7;
+    color: rgb(75, 22, 76);
 }
 
 section ul, section ol {
@@ -130,31 +206,32 @@ section li {
     margin-bottom: 0.8rem;
     position: relative;
     padding-left: 0.5rem;
+    color: rgb(75, 22, 76);
 }
 
 section ul li::marker {
-    color: #8a2be2;
+    color: rgb(221, 136, 207);
 }
 
 section ol li::marker {
-    color: #8a2be2;
+    color: rgb(221, 136, 207);
     font-weight: bold;
 }
 
 strong {
-    color: #6a1b9a;
+    color: rgb(75, 22, 76);
     font-weight: 600;
 }
 
 footer {
     text-align: center;
-    background-color: #8a2be2;
-    color: white;
+    background-color: rgb(221, 136, 207);
+    color: rgb(245, 245, 245);
     padding: 1.5rem;
     margin: 3rem auto 1rem;
     max-width: 1200px;
-    border-radius: 8px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
 }
 
 footer p {
@@ -162,22 +239,24 @@ footer p {
 }
 
 footer a {
-    color: white;
+    color: rgb(245, 245, 245);
     text-decoration: underline;
     font-weight: 600;
-    transition: color 0.3s ease;
 }
 
 footer a:hover {
-    color: #f0e6ff;
+    color: rgb(248, 231, 246);
 }
 
 .info-card {
-    background-color: #f9f6ff;
-    border-left: 4px solid #8a2be2;
+    background-color: rgb(248, 231, 246);
+    border-left: 4px solid rgb(221, 136, 207);
     padding: 1.2rem 1.5rem;
     margin: 1.5rem 0;
     border-radius: 4px;
+    color: rgb(75, 22, 76);
+    box-shadow: none;
+    border: none;
 }
 
 #resources .resource-item {
@@ -185,33 +264,34 @@ footer a:hover {
     align-items: center;
     margin-bottom: 1rem;
     padding: 0.8rem;
-    background-color: #f9f6ff;
+    background-color: rgb(248, 231, 246);
     border-radius: 4px;
-    transition: background-color 0.3s ease;
+    color: rgb(75, 22, 76);
+    box-shadow: none;
+    border: none;
 }
 
 #resources .resource-item:hover {
-    background-color: #f0e6ff;
+    background-color: rgb(245, 245, 245);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 #resources .resource-item strong {
     margin-right: 0.5rem;
     flex: 1;
+    color: rgb(75, 22, 76);
 }
 
-/* Language Selector Styling (Copied from styles.css) */
 .language-selector-fixed {
     position: fixed;
     bottom: 2rem;
     left: 2rem;
     z-index: 1000;
-    background-color: #4B164C; /* Changed to match primary color */
+    background-color: rgb(75, 22, 76);
     padding: 0.8rem 1.2rem;
     border-radius: 50px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
 }
 
 .language-selector-fixed:hover {
@@ -222,9 +302,8 @@ footer a:hover {
 .language-selector-fixed select {
     background-color: transparent;
     border: none;
-    color: white;
+    color: rgb(245, 245, 245);
     font-size: 1rem;
-    /* Using a fallback font if Montserrat is not available in lstyles.css */
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     padding-right: 20px;
@@ -247,32 +326,32 @@ footer a:hover {
 }
 
 .language-selector-fixed select option {
-    background-color: #4B164C; /* Changed to match primary color */
-    color: white;
+    background-color: rgb(75, 22, 76);
+    color: rgb(245, 245, 245);
 }
 
 @media (max-width: 768px) {
     header {
         padding: 1.5rem 0;
     }
-    
+
     header h1 {
         font-size: 1.8rem;
     }
-    
-    nav ul {
+
+    .main-nav-sticky ul {
         flex-direction: column;
         align-items: center;
     }
-    
-    nav li {
+
+    .main-nav-sticky li {
         margin: 0.3rem 0;
     }
-    
+
     section {
         padding: 1.2rem;
     }
-    
+
     section h2 {
         font-size: 1.5rem;
     }
@@ -292,15 +371,15 @@ footer a:hover {
     header h1 {
         font-size: 1.5rem;
     }
-    
+
     header p {
         font-size: 0.95rem;
     }
-    
+
     section h2 {
         font-size: 1.3rem;
     }
-    
+
     .emergency-banner h3 {
         font-size: 1.1rem;
     }

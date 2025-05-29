@@ -23,18 +23,19 @@
         </select>
     </div>
 
+    <nav class="main-nav-sticky">
+        <ul>
+            <li><a href="home.php" data-translate="nav-home">Home</a></li>
+            <li><a href="legal.html" data-translate="nav-resources">Resources</a></li>
+            <li><a href="support.html" data-translate="nav-support">Support</a></li>
+            <li><a href="gbv.html" data-translate="nav-gbv">GBV</a></li>
+            <li><a href="finalChat.html" data-translate="nav-safe-haven">Safe Haven</a></li>
+            <li><a href="share.html" data-translate="nav-share-story">Share Your Story</a></li>
+            <li><a href="Contact.html" data-translate="nav-contact-us">Contact Us</a></li>
+        </ul>
+    </nav>
+
     <header>
-        <nav>
-            <ul>
-                <li><a href="home.php" data-translate="nav-home">Home</a></li>
-                <li><a href="legal.html" data-translate="nav-resources">Resources</a></li>
-                <li><a href="" data-translate="nav-support">Support</a></li>
-                <li><a href="gbv.html" data-translate="nav-gbv">GBV</a></li>
-                <li><a href="finalChat.html" class="active" data-translate="nav-safe-haven">Safe Haven</a></li>
-                <li><a href="share.html" data-translate="nav-share-story">Share Your Story</a></li>
-                <li><a href="Contact.html" data-translate="nav-contact-us">Contact Us</a></li>  
-            </ul>
-        </nav>
         <h1 data-translate="legal-header-title">Legal Information on Domestic Violence</h1>
         <p data-translate="legal-header-description">Learn about your rights under the Domestic Violence Act and how to obtain a protection order.</p>
     </header>
@@ -114,6 +115,26 @@
         <p data-translate="footer-disclaimer">This information is provided for educational purposes only and does not constitute legal advice.</p>
     </footer>
 
-    <script src="js/legal.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const currentPath = window.location.pathname;
+            const currentPageFilename = currentPath.split('/').pop();
+
+            const mainNavLinks = document.querySelectorAll('.main-nav-sticky ul li a');
+
+            mainNavLinks.forEach(link => {
+                const linkFilename = link.getAttribute('href').split('/').pop();
+
+                link.classList.remove('active', 'active-page');
+                link.removeAttribute('aria-current'); 
+
+                if (linkFilename === currentPageFilename) {
+                    link.classList.add('active-page');
+                    link.setAttribute('aria-current', 'page'); 
+                }
+            });
+        });
+    </script>
 </body>
 </html>

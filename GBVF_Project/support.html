@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="page-title-legal">Legal Information on Domestic Violence</title>
+    <link rel="stylesheet" href="../css/lstyles.css">
+</head>
+<body>
+    <div class="language-selector-fixed">
+        <select id="languageSelect" aria-label="Select Language">
+            <option value="en">English</option>
+            <option value="af">Afrikaans</option>
+            <option value="nso">Sepedi</option>
+            <option value="st">Sesotho</option>
+            <option value="ss">Siswati</option>
+            <option value="tn">Setswana</option>
+            <option value="ts">Xitsonga</option>
+            <option value="ve">Tshivenḓa</option>
+            <option value="xh">isiXhosa</option>
+            <option value="zu">isiZulu</option>
+            <option value="nr">isiNdebele</option>
+        </select>
+    </div>
+
+    <nav class="main-nav-sticky">
+        <ul>
+            <li><a href="home.php" data-translate="nav-home">Home</a></li>
+            <li><a href="legal.html" data-translate="nav-resources">Resources</a></li>
+            <li><a href="support.html" data-translate="nav-support">Support</a></li>
+            <li><a href="gbv.html" data-translate="nav-gbv">GBV</a></li>
+            <li><a href="finalChat.html" data-translate="nav-safe-haven">Safe Haven</a></li>
+            <li><a href="share.html" data-translate="nav-share-story">Share Your Story</a></li>
+            <li><a href="Contact.html" data-translate="nav-contact-us">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1 data-translate="get-support-title">Get support</h1>
+        <p data-translate="get-support-description">There are always people who can help.</p>
+    </header>
+
+
+    <div class="emergency-banner">
+        <h3 data-translate="emergency-banner-title">Emergency Help</h3>
+        <p data-translate="emergency-banner-description">If you are in immediate danger, call the police at <strong>10111</strong> or the Gender-Based Violence Command Centre at <strong>0800 428 428</strong>.</p>
+    </div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const currentPath = window.location.pathname;
+            const currentPageFilename = currentPath.split('/').pop();
+
+            const mainNavLinks = document.querySelectorAll('.main-nav-sticky ul li a');
+
+            mainNavLinks.forEach(link => {
+                const linkFilename = link.getAttribute('href').split('/').pop();
+
+                link.classList.remove('active', 'active-page');
+                link.removeAttribute('aria-current'); 
+
+                if (linkFilename === currentPageFilename) {
+                    link.classList.add('active-page');
+                    link.setAttribute('aria-current', 'page'); 
+                }
+            });
+        });
+    </script>
+</body>
+</html>

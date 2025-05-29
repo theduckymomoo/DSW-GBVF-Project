@@ -1,16 +1,58 @@
-<?php
-session_start();
-?>
+<?php $currentPage = basename($_SERVER['PHP_SELF']); session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-translate="page-title">Ukhuseleko</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+
+    <div id="banner">
+        
+        <div class="background-image">
+            <img src="images/holding_hands.png" alt="Holding Hands Background">
+        </div>
+        <div class="intro">
+            <h1 data-translate="intro-heading">Protection and Support Against Domestic Violence</h1>
+            <p data-translate="intro-paragraph">You are not alone. Ukhuseleko provides support, resources, and immediate assistance for those experiencing domestic violence in South Africa.</p>
+            <div class="buttons">
+                <button type="submit" id="Story" data-translate="btn-find-resources">Find Resources</button>
+                <button type="submit" id="Learn" href="share.html" data-translate="btn-get-support">Get Support</button>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        
+
+        <nav>
+              <ul class="navbar">
+                <li><a href="home.php" class="active" data-translate="nav-home">Home</a></li>
+                <li><a href="legal.html" data-translate="nav-resources">Resources</a></li>
+                <li><a href="support.html" data-translate="nav-support">Support</a></li>
+                <li><a href="gbv.html" data-translate="nav-gbv">GBV</a></li>
+                <li><a href="finalChat.html" data-translate="nav-safe-haven">Safe Haven</a></li>
+                <li><a href="share.html" data-translate="nav-share-story">Share Your Story</a></li>
+                <li><a href="Contact.html" data-translate="nav-contact-us">Contact Us</a></li>
+  
+                <li>
+                    <?php if (isset($_SESSION["username"])): ?>
+                        <a href="logout.php" data-translate="logout-user">
+                            Logout (<?php echo htmlspecialchars($_SESSION["username"]); ?>)
+                        </a>
+                    <?php else: ?>
+                        <a href="login.php" data-translate="login-guest">
+                            Login (Guest)
+                        </a>
+                    <?php endif; ?>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
     <button class="emergency-btn" id="emergencyBtn" data-translate="emergency-help-btn">
         <img src="images/emergency-button.png" alt="Emergency Icon">
@@ -32,62 +74,18 @@ session_start();
             <option value="nr">isiNdebele</option>
         </select>
     </div>
-
-    <header>
-        <div class="logo">
-            <img src="images/logo-swap-removebg.png" alt="Logo">
-        </div>
-        
-        <nav>
-            <ul>
-                <li><a href="home.php" data-translate="nav-home">Home</a></li>
-                <li><a href="legal.html" data-translate="nav-resources">Resources</a></li>
-                <li><a href="" data-translate="nav-support">Support</a></li>
-                <li><a href="gbv.html" data-translate="nav-gbv">GBV</a></li>
-                <li><a href="finalChat.html" class="active" data-translate="nav-safe-haven">Safe Haven</a></li>
-                <li><a href="share.html" data-translate="nav-share-story">Share Your Story</a></li>
-                <li><a href="Contact.html" data-translate="nav-contact-us">Contact Us</a></li>
-                <li>
-                 
-                    <?php if (isset($_SESSION["username"])): ?>
-                        <a href="logout.php" data-translate="logout-user">
-                            Logout (<?php echo htmlspecialchars($_SESSION["username"]); ?>)
-                        </a>
-                    <?php else: ?>
-                        <a href="login.php" data-translate="login-guest">
-                            Login (Guest)
-                        </a>
-                    <?php endif; ?>
-
-                </li>
-            </ul>
-        </nav>
-    </header>
-
-<div class="intro">
-    <video class="background-video" autoplay muted loop playsinline>
-        <source src="../video/GBV-video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-    </video>
-
-    <h1 data-translate="intro-heading">Protection and Support Against Domestic Violence</h1>
-    <p data-translate="intro-paragraph">You are not alone. Ukhuseleko provides support, resources, and immediate assistance for those experiencing domestic violence in South Africa.</p>
-    <div class="buttons">
-        <button type="submit" id="Story" data-translate="btn-find-resources">Find Resources</button>
-        <button type="submit" id="Learn" href="share.html" data-translate="btn-get-support">Get Support</button>
-    </div>
-</div>
+    
 
     <div class="text1">
         <h2 data-translate="how-can-we-help-you-heading">How Can We Help You</h2>
-        <p data-translate="how-can-we-help-you-paragraph">Ukhuseleko stands against gender-based violence and are committed to raising awareness, supporting survivors, and driving meaningful change through advocacy and action.</p>   
+        <p data-translate="how-can-we-help-you-paragraph">Ukhuseleko stands against gender-based violence and are committed to raising awareness, supporting survivors, and driving meaningful change through advocacy and action.</p>
     </div>
 
     <div class="tips">
         <div class="tips-top">
             <div class="emergency">
                 <div class="picture">
-                    <img src="images/emergency.png">
+                    <img src="images/emergency.png" alt="Emergency">
                         <div class="text">
                             <h2 data-translate="emergency-response-title">Emergency Response</h2>
                             <p data-translate="emergency-response-desc">Quick access to emergency services with our silent reporting system and real-time status updates.</p>
@@ -97,7 +95,7 @@ session_start();
 
             <div class="legal" onclick="location.href='legal.html'">
                 <div class="picture">
-                    <img src="images/legal.png">
+                    <img src="images/legal.png" alt="Legal Information">
                         <div class="text">
                             <h2 data-translate="legal-info-title">Legal Information</h2>
                             <p data-translate="legal-info-desc">Learn about your rights under the Domestic Violence Act and how to obtain protection orders.</p>
@@ -107,7 +105,7 @@ session_start();
 
             <div class="support">
                 <div class="picture">
-                    <img src="images/support.png">
+                    <img src="images/support.png" alt="Support Network">
                         <div class="text">
                             <h2 data-translate="support-network-title">Support Network</h2>
                             <p data-translate="support-network-desc">Connect with local organizations, shelters, and support groups in your community.</p>
@@ -117,7 +115,7 @@ session_start();
 
             <div class="resource">
                 <div class="picture">
-                    <img src="images/resourse.png">
+                    <img src="images/resourse.png" alt="Resource Hub">
                         <div class="text">
                             <h2 data-translate="resource-hub-title">Resource Hub</h2>
                             <p data-translate="resource-hub-desc">Access information about government grants, employment programs, and economic empowerment.</p>
@@ -128,7 +126,7 @@ session_start();
         <div class="tips-bottom">
             <div class="safe-haven" onclick="window.location.href='finalChat.html'">
                 <div class="picture">
-                    <img src="images/healing2.png">
+                    <img src="images/healing2.png" alt="Safe Haven">
                         <div class="text">
                             <h2 data-translate="safe-haven-title">Safe Haven</h2>
                             <p data-translate="safe-haven-desc">Connect with fellow GBV survivors in a safe space designed for support, shared stories, and healing.</p>
@@ -138,7 +136,7 @@ session_start();
 
             <div class="share-your-story" onclick="window.location.href='share.html'">
                 <div class="picture">
-                    <img src="images/share_your_story.png">
+                    <img src="images/share_your_story.png" alt="Share Your Story">
                         <div class="text">
                             <h2 data-translate="share-story-title">Share Your Story</h2>
                             <p data-translate="share-story-desc">Your voice matters — share your journey and let others know they're not alone.</p>
@@ -147,7 +145,7 @@ session_start();
             </div>
             <div class="counseling">
                 <div class="picture">
-                    <img src="images/sitting.png">
+                    <img src="images/sitting.png" alt="Counseling">
                         <div class="text">
                             <h2 data-translate="counseling-title">Counseling</h2>
                             <p data-translate="counseling-desc">Access confidential counseling and speak to professionals who are here to support your healing journey.</p>
@@ -157,7 +155,7 @@ session_start();
 
             <div class="how-to-get-out">
                 <div class="picture">
-                    <img src="images/get_out_woman.png">
+                    <img src="images/get_out_woman.png" alt="How to Get Out">
                         <div class="text">
                             <h2 data-translate="how-to-get-out-title">How to Get Out</h2>
                             <p data-translate="how-to-get-out-desc">Step-by-step guidance to leave toxic relationships with safety planning, emotional support, and trusted resources.</p>
@@ -166,9 +164,9 @@ session_start();
             </div>
         </div>
     </div>
-    
+
     <br><br><br><br>
-    
+
     <div class="facts-container">
         <div class="facts-title"><h3 data-translate="facts-heading">Facts about GBVF in South Africa</h3></div>
 
@@ -199,7 +197,7 @@ session_start();
                     <li data-translate="footer-testimonials">Testimonials</li>
                 </ul>
             </div>
-    
+
             <div class="footer-column">
                 <h2 data-translate="footer-resources">Resources</h2>
                 <ul>
@@ -209,7 +207,7 @@ session_start();
                     <li data-translate="footer-financial-aid">Financial Aid</li>
                 </ul>
             </div>
-            
+
             <div class="footer-column">
                 <h2 data-translate="footer-emergency-contacts">Emergency Contacts</h2>
                 <ul>
@@ -219,7 +217,7 @@ session_start();
                     <li data-translate="footer-feedback">Feedback</li>
                 </ul>
             </div>
-    
+
             <div class="footer-column">
                 <h2 data-translate="footer-legal">Legal</h2>
                 <ul>

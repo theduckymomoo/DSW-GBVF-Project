@@ -4,9 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-translate="page-title-gbv">Gender-Based Violence Information</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/gbv_style.css">
 </head>
 <body>
+    <nav class="main-nav-sticky">
+        <ul>
+            <li><a href="home.php" data-translate="nav-home">Home</a></li>
+            <li><a href="legal.html" data-translate="nav-resources">Resources</a></li>
+            <li><a href="support.html" data-translate="nav-support">Support</a></li>
+            <li><a href="gbv.html" class="active-page" aria-current="page" data-translate="nav-gbv">GBV</a></li>
+            <li><a href="finalChat.html" data-translate="nav-safe-haven">Safe Haven</a></li>
+            <li><a href="share.html" data-translate="nav-share-story">Share Your Story</a></li>
+            <li><a href="Contact.html" data-translate="nav-contact-us">Contact Us</a></li>
+        </ul>
+    </nav>
+
     <div class="language-selector-fixed">
         <select id="languageSelect" aria-label="Select Language">
             <option value="en">English</option>
@@ -23,32 +35,25 @@
         </select>
     </div>
 
-    <header>  
-        <nav>
-            <ul>
-                <li><a href="index.html" data-translate="nav-home">Home</a></li>
-                <li><a href="legal.html" data-translate="nav-resources">Resources</a></li>
-                <li><a href="" data-translate="nav-support">Support</a></li>
-                <li><a href="gbv.html" data-translate="nav-gbv">GBV</a></li>
-                <li><a href="finalChat.html" class="active" data-translate="nav-safe-haven">Safe Haven</a></li>
-                <li><a href="share.html" data-translate="nav-share-story">Share Your Story</a></li>
-                <li><a href="Contact.html" data-translate="nav-contact-us">Contact Us</a></li>  
-            </ul>
-        </nav>
+    <header>
+        <img src="./images/logo-removebg.png" alt="Company Logo" id="header-logo">
+        <h1 data-translate="gbv-title">Gender-Based Violence Information</h1>
+        <p data-translate="legal-header-description">Understand what Gender Based Violence Is.</p>
     </header>
 
-  <div class="page-content">
-    <p data-translate="page-content-intro">Page Content</p>
-    <ul>
-        <div class="item1"> <li><a href="#what-is-gbv" data-translate="what-is-gbv-link">Gender-based violence (GBV) by definition</a></li></div>
-         
-        <div class="item1"> <hr><li><a href="#forms-of-gbv" data-translate="forms-of-gbv-link">Forms of gender-based violence</a></li><hr></div>
-        
-        <div class="item1"><li><a href="#examples-of-gbv" data-translate="examples-of-gbv-link">Examples of gender-based violence</a></li></div>
-    </ul>
-  </div>
 
-  <div id="what-is-gbv" class="content">
+    <div class="page-content">
+        <p data-translate="page-content-intro">Page Content</p>
+        <ul>
+            <div class="item1"> <li><a href="#what-is-gbv" data-translate="what-is-gbv-link">Gender-based violence (GBV) by definition</a></li></div>
+
+            <div class="item1"> <hr><li><a href="#forms-of-gbv" data-translate="forms-of-gbv-link">Forms of gender-based violence</a></li><hr></div>
+
+            <div class="item1"><li><a href="#examples-of-gbv" data-translate="examples-of-gbv-link">Examples of gender-based violence</a></li></div>
+        </ul>
+    </div>
+
+    <div id="what-is-gbv" class="content">
         <h1 data-translate="what-is-gbv-title">What is Gender Based Violence(GBV)</h1>
         <p data-translate="what-is-gbv-paragraph1">
             Gender-based violence refers to any form of violence directed at an individual because of their gender or that disproportionately impacts individuals of a specific gender.
@@ -58,7 +63,7 @@
         </p>
 
         <img src="../images/gbv.jpg" alt="Image representing Gender-Based Violence">
-  </div>
+    </div>
     <div id="forms-of-gbv" class="content">
         <h1 data-translate="forms-of-gbv-title">Forms of Gender Based Violence</h1>
         <p data-translate="forms-of-gbv-intro-paragraph">Gender-based violence can take various forms</p>
@@ -67,7 +72,7 @@
             <div class="sections">
                 <img src="../images/physical-abuse-2.png" alt="Image representing sexual violence">
                 <p data-translate="sexual-violence-description">Sexual violence refers to non-consensual acts that violate personal autonomy. It includes rape, sexual assault, and harassment, which can cause serious trauma and create hostile environments. Other forms include forced prostitution, trafficking, and revenge pornography, all involving coercion, exploitation, and emotional harm.</p>
-            </div>     
+            </div>
         </div>
 
         <div id="text" >
@@ -76,7 +81,6 @@
                 <img src="../images/emotional-abuse.jpg" alt="Image representing emotional abuse">
                 <p data-translate="psychological-abuse-description">Psychological or emotional abuse undermines a person's sense of self-worth and security. Intimidation and threats create a climate of fear, making victims feel powerless. Gaslighting and manipulation distort reality, causing confusion and self-doubt. Stalking and cyberstalking involve persistent harassment that invades a person's privacy and induces anxiety. Controlling behavior, such as isolating someone from friends or dictating their actions, erodes their independence and self-confidence.</p>
             </div>
-            
         </div>
 
         <div id="text">
@@ -131,7 +135,34 @@
             </ul>
         </div>
     </div>
-    
+
+    <footer class="footer-container">
+        <p data-translate="footer-justice-link">For more details, visit the <a href="https://www.justice.gov.za" target="_blank">Department of Justice</a> website.</p>
+        <p data-translate="footer-disclaimer">This information is provided for educational purposes only and does not constitute legal advice.</p>
+    </footer>
+
     <script src="../js/gbv.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        
+            const currentPath = window.location.pathname;
+            const currentPageFilename = currentPath.split('/').pop();
+
+            const mainNavLinks = document.querySelectorAll('.main-nav-sticky ul li a');
+
+            mainNavLinks.forEach(link => {
+
+                const linkFilename = link.getAttribute('href').split('/').pop();
+
+                link.classList.remove('active', 'active-page');
+                link.removeAttribute('aria-current'); 
+
+                if (linkFilename === currentPageFilename) {
+                    link.classList.add('active-page');
+                    link.setAttribute('aria-current', 'page'); 
+                }
+            });
+        });
+    </script>
 </body>
 </html>

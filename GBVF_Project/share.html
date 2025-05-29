@@ -7,28 +7,42 @@
     <link rel="stylesheet" href="../css/share.css">
 </head>
 <body>
-    <header>
-        <img src="../images/logo-swap-removebg.png">
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="legal.html">Resources</a></li>
-                <li><a href="">Support</a></li>
-                <li><a href="gbv.html">GBV</a></li>
-                <li><a href="finalChat.html" class="active">Safe Haven</a></li>
-                <li><a href="share.html">Share Your Story</a></li>
-                <li><a href="Contact.html">Contact Us</a></li>  
-            </ul>
-        </nav>
-    </header>
-    
-    <div class="intro">
-        <h3>Share Your Story</h3>
-        <p>Your voice matters. By sharing your experiences, you can help others know they are not alone, inspire hope, and contribute to breaking the cycle of gender-based violence.</p>
+    <nav class="main-nav-sticky">
+        <ul>
+            <li><a href="home.php" data-translate="nav-home">Home</a></li>
+            <li><a href="legal.html" data-translate="nav-resources">Resources</a></li>
+            <li><a href="support.html" data-translate="nav-support">Support</a></li>
+            <li><a href="gbv.html" class="active-page" aria-current="page" data-translate="nav-gbv">GBV</a></li>
+            <li><a href="finalChat.html" data-translate="nav-safe-haven">Safe Haven</a></li>
+            <li><a href="share.html" data-translate="nav-share-story">Share Your Story</a></li>
+            <li><a href="Contact.html" data-translate="nav-contact-us">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <div class="language-selector-fixed">
+        <select id="languageSelect" aria-label="Select Language">
+            <option value="en">English</option>
+            <option value="af">Afrikaans</option>
+            <option value="nso">Sepedi</option>
+            <option value="st">Sesotho</option>
+            <option value="ss">Siswati</option>
+            <option value="tn">Setswana</option>
+            <option value="ts">Xitsonga</option>
+            <option value="ve">Tshivenḓa</option>
+            <option value="xh">isiXhosa</option>
+            <option value="zu">isiZulu</option>
+            <option value="nr">isiNdebele</option>
+        </select>
     </div>
 
+    <header>
+        <img src="./images/logo-removebg.png" alt="Company Logo" id="header-logo">
+        <h3>Share Your Story</h3>
+        <p>Your voice matters. By sharing your experiences, you can help others know they are not alone, inspire hope, and contribute to breaking the cycle of gender-based violence.</p>
+    </header>
+
     <div class="tell-your-story">
-        <h3>Tell our story</h3>
+        <h3>Tell your story</h3>
         <label for="name">Name or You can be Anonymous</label><br>
         <input id="for" placeholder="Enter your Name or You can remain Anonymous"><br><br>
         <label for="email">Email(Optional)</label><br>
@@ -130,5 +144,29 @@
             </div>
         </div>
     </div>
+
+        <script src="../js/gbv.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+           
+            const currentPath = window.location.pathname;
+            const currentPageFilename = currentPath.split('/').pop();
+
+            const mainNavLinks = document.querySelectorAll('.main-nav-sticky ul li a');
+
+            mainNavLinks.forEach(link => {
+
+                const linkFilename = link.getAttribute('href').split('/').pop();
+
+                link.classList.remove('active', 'active-page');
+                link.removeAttribute('aria-current'); 
+
+                if (linkFilename === currentPageFilename) {
+                    link.classList.add('active-page');
+                    link.setAttribute('aria-current', 'page'); 
+                }
+            });
+        });
+    </script>
 </body>
 </html>

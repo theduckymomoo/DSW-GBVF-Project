@@ -726,3 +726,27 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+        
+    const currentPath = window.location.pathname;
+    const currentPageFilename = currentPath.split('/').pop();
+
+    const mainNavLinks = document.querySelectorAll('.main-nav-sticky ul li a');
+
+    mainNavLinks.forEach(link => {
+
+    const linkFilename = link.getAttribute('href').split('/').pop();
+
+        link.classList.remove('active', 'active-page');
+        link.removeAttribute('aria-current'); 
+
+            if (linkFilename === currentPageFilename) {
+                link.classList.add('active-page');
+                link.setAttribute('aria-current', 'page'); 
+            }
+      });
+});
+  

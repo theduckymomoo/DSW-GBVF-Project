@@ -118,4 +118,21 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = "finalChat.html"; 
         });
     }
+
+    window.addEventListener('scroll', function() {
+    const backgroundImage = document.querySelector('.background-image img');
+    const scrollPosition = window.pageYOffset;
+    backgroundImage.style.transform = 'translateY(' + scrollPosition * 0.5 + 'px)';
+    });
+
+    window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+    });
+
+    
 });
